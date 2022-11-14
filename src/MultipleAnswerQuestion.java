@@ -42,4 +42,5 @@ public class MultipleAnswerQuestion extends Question {
     public void checkAnswer(String answerInput) {
 
     }
+
 }
