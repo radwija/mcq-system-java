@@ -3,24 +3,28 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.io.FileNotFoundException;
 
 
 public class ReadFile {
     public static void main(String[] args) {
-        String file = "src/cities.csv";
-        String delimiter = ",";
-        String line;
-        List<List<String>> lines = new ArrayList();
-        try (Scanner s = new Scanner(new File(file))) {
-            while (s.hasNext()) {
-                line = s.next();
-                List values = Arrays.asList(line.split(delimiter));
-                lines.add(values);
-                System.out.println(values.get(0));
+        String data = null;
+        try {
+            File myObj = new File("src/question.csv");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                data = myReader.nextLine();
+//                System.out.println(data);
             }
-            lines.forEach(l -> System.out.println(l));
-        } catch (Exception e) {
-            System.out.println(e);
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        if (data.trim() == "question") {
+            System.out.println("Benar");
+        } else {
+            System.out.println("Salah");
         }
 
     }
