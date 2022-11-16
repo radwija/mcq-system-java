@@ -48,7 +48,9 @@ public class Question {
         Question q = new Question(filePath, 6);
         String[][] data = q.getQuestionData();
 
-        if (data[0][0] == "question") {
+        System.out.println(data[0][1]);
+
+        if (data[0][1].contentEquals("option1")) {
             System.out.println("Benar");
         } else {
             System.out.println("Salah");
