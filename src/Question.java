@@ -2,18 +2,20 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Question {
+    public String mcqSetName;
     public String filePath;
     public int amountOfField;
 
-//    public String[][] questionData = this.getQuestionData();
+    public String[][] questions;
 
-    public Question(String filePath, int amountOfField) {
+    public Question(String mcqSetName, String filePath, int amountOfField) {
+        this.mcqSetName = mcqSetName;
         this.filePath = filePath;
         this.amountOfField = amountOfField;
-    }
-    public String[][] getQuestionData() {
+
         List<String> recordList = new ArrayList<String>();
 
         String delimiter = ",";
@@ -37,23 +39,44 @@ public class Question {
                     arrayToReturn[i][j] = data[j];
                 }
             }
-            return arrayToReturn;
+            this.questions = arrayToReturn;
         } catch (Exception e) {
             System.out.println(e);
-            return null;
+            this.questions = null;
         }
+
     }
+
+    public String getQuestionData(int row, int column) {
+        return questions[row][column];
+    }
+
     public static void main(String[] args) {
         String filePath = "src/question.csv";
-        Question q = new Question(filePath, 6);
-        String[][] data = q.getQuestionData();
+        Question q = new Question("Java Basic", filePath, 6);
+//        String[][] data = q.getQuestionData();
+        System.out.println(q.questions.length);
 
-        System.out.println(data[0][1]);
+        int score = 0;
+        Scanner input = new Scanner(System.in);
 
-        if (data[0][1].contentEquals("option1")) {
-            System.out.println("Benar");
-        } else {
-            System.out.println("Salah");
+        for (int row = 0; row < q.questions.length; row++) {
+            System.out.println((row + 1) + ". " + q.questions[row][0]);
+            System.out.println("   a. " + q.questions[row][1]);
+            System.out.println("   b. " + q.questions[row][2]);
+            System.out.println("   c. " + q.questions[row][3]);
+            System.out.println("   d. " + q.questions[row][4]);
+            String correctAns = q.questions[row][5];
+            System.out.print("Input your answer: ");
+            String userAnswer = input.next();
+            if (correctAns.equalsIgnoreCase(userAnswer)) {
+                System.out.println("Benar");
+                score++;
+            } else {
+                System.out.println("Salah");
+            }
         }
+        System.out.println("Your score: " + score);
+
     }
 }
