@@ -56,9 +56,9 @@ public class Question {
         Question q = new Question("Java Basic", filePath, 6);
 //        String[][] data = q.getQuestionData();
         System.out.println(q.questions.length);
-
-        int score = 0;
+        int correctAnswer = 0;
         Scanner input = new Scanner(System.in);
+
 
         for (int row = 0; row < q.questions.length; row++) {
             System.out.println((row + 1) + ". " + q.questions[row][0]);
@@ -71,12 +71,13 @@ public class Question {
             String userAnswer = input.next();
             if (correctAns.equalsIgnoreCase(userAnswer)) {
                 System.out.println("Benar");
-                score++;
+                correctAnswer++;
             } else {
                 System.out.println("Salah");
             }
         }
-        System.out.println("Your score: " + score);
+
+        System.out.println("Your score: " + correctAnswer);
 
     }
 }
