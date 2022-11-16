@@ -1,15 +1,44 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Question {
-    String prompt;
-    String answer;
+    public String filePath;
+    public int amountOfField;
 
-    String margin = "   ";
-
-    public Question(String prompt, String answer) {
-        this.prompt = prompt;
-        this.answer = answer;
+    public Question(String filePath, int amountOfField) {
+        this.filePath = filePath;
+        this.amountOfField = amountOfField;
     }
+    public String[][] getQuestionData() {
+        List<String> recordList = new ArrayList<String>();
 
-    public String getPrompt() {
-        return prompt;
+        String delimiter = ",";
+        String currentLine;
+
+        try {
+            FileReader fr = new FileReader(this.filePath);
+            BufferedReader br = new BufferedReader(fr);
+
+            while ((currentLine = br.readLine()) != null) {
+                recordList.add(currentLine);
+            }
+            int recordCount = recordList.size();
+
+            String arrayToReturn[][] = new String[recordCount][this.amountOfField];
+            String[] data;
+
+            for (int i = 0; i < recordCount; i++) {
+                data = recordList.get(i).split(delimiter);
+                for (int j = 0; j < data.length; j++) {
+                    arrayToReturn[i][j] = data[j];
+                }
+            }
+            return arrayToReturn;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
     }
 }
