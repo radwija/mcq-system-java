@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Object {
-    private String objectName;
+    public String objectName;
 
     public Object(String objectName) {
         this.objectName = objectName;
@@ -23,6 +23,10 @@ class RunObjectInArrrayList {
     public void runObject(int objectOption) {
         this.objectsToRun.get(objectOption - 1).printObjectName();
     }
+
+    public void getPropertyOfObject(Object object) {
+        System.out.println("I got this object name: " + object.objectName);
+    }
 }
 
 class App {
@@ -38,5 +42,6 @@ class App {
 
         RunObjectInArrrayList runner = new RunObjectInArrrayList(objectsToRun);
         runner.runObject(1);
+        runner.getPropertyOfObject(o1);
     }
 }
