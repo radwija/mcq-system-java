@@ -29,7 +29,7 @@ public class MCQExecutor {
     public void executeMcq() {
         Scanner input = new Scanner(System.in);
         System.out.print("Hi, how can we address you?\nEnter your name: ");
-        String nameInput = input.next();
+        String nameInput = input.nextLine();
         this.setName(nameInput);
         System.out.println("\nWelcome to our MCQ on IT, " + this.getName() + ":)");
         System.out.println("Choose your Multiple Choice Question Set. The Options are: ");

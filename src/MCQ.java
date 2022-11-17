@@ -68,9 +68,11 @@ public class MCQ {
             String userAnswer = input.next();
             if (correctAns.equalsIgnoreCase(userAnswer)) {
                 System.out.println("Great, your answer is correct!");
+                System.out.println("==============================");
                 correctAnswer++;
             } else {
                 System.out.println("Your answer is wrong. The right answer is "+ correctAns);
+                System.out.println("==============================");
             }
         }
         System.out.println("Your correct answer: " + this.getCorrectAnswer());
