@@ -5,11 +5,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class mcq {
-    public String mcqSetName;
-    public String filePath;
-    public int amountOfField;
+    private String mcqSetName;
+    private String filePath;
+    private int amountOfField;
     private String[][] questions;
-
     private int correctAnswer;
 
     public mcq(String mcqSetName, String filePath, int amountOfField) {
@@ -46,6 +45,10 @@ public class mcq {
             System.out.println(e);
             this.questions = null;
         }
+    }
+
+    public String getMcqSetName() {
+        return this.mcqSetName;
     }
 
     public void doMCQ() {
