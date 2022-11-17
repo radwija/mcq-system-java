@@ -8,13 +8,15 @@ public class Question {
     public String mcqSetName;
     public String filePath;
     public int amountOfField;
+    private String[][] questions;
 
-    public String[][] questions;
+    private int correctAnswer;
 
     public Question(String mcqSetName, String filePath, int amountOfField) {
         this.mcqSetName = mcqSetName;
         this.filePath = filePath;
         this.amountOfField = amountOfField;
+        correctAnswer = 0;
 
         List<String> recordList = new ArrayList<String>();
 
@@ -44,11 +46,25 @@ public class Question {
             System.out.println(e);
             this.questions = null;
         }
-
     }
 
-    public String getQuestionData(int row, int column) {
-        return questions[row][column];
+    public void doQuestion(String userAnswer) {
+        for (int row = 0; row < this.questions.length; row++) {
+            System.out.println((row + 1) + ". " + this.questions[row][0]);
+            System.out.println("   a. " + this.questions[row][1]);
+            System.out.println("   b. " + this.questions[row][2]);
+            System.out.println("   c. " + this.questions[row][3]);
+            System.out.println("   d. " + this.questions[row][4]);
+            String correctAns = this.questions[row][5];
+            System.out.print("Input your answer: ");
+
+            if (correctAns.equalsIgnoreCase(userAnswer)) {
+                System.out.println("Benar");
+                correctAnswer++;
+            } else {
+                System.out.println("Salah");
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -59,23 +75,6 @@ public class Question {
         int correctAnswer = 0;
         Scanner input = new Scanner(System.in);
 
-
-        for (int row = 0; row < q.questions.length; row++) {
-            System.out.println((row + 1) + ". " + q.questions[row][0]);
-            System.out.println("   a. " + q.questions[row][1]);
-            System.out.println("   b. " + q.questions[row][2]);
-            System.out.println("   c. " + q.questions[row][3]);
-            System.out.println("   d. " + q.questions[row][4]);
-            String correctAns = q.questions[row][5];
-            System.out.print("Input your answer: ");
-            String userAnswer = input.next();
-            if (correctAns.equalsIgnoreCase(userAnswer)) {
-                System.out.println("Benar");
-                correctAnswer++;
-            } else {
-                System.out.println("Salah");
-            }
-        }
 
         System.out.println("Your score: " + correctAnswer);
 

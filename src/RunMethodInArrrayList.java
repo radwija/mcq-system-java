@@ -14,7 +14,7 @@ class Object {
 }
 
 class RunObjectInArrrayList {
-    List<Object> objectsToRun = new ArrayList<Object>();
+    private List<Object> objectsToRun = new ArrayList<Object>();
 
     public RunObjectInArrrayList(List<Object> objectsToRun) {
         this.objectsToRun = objectsToRun;
