@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class RunMCQ {
-    private List<MCQ> objectsToRun = new ArrayList<MCQ>();
+public class mcqExecutor {
+    private List<mcq> objectsToRun = new ArrayList<mcq>();
 
-    public RunMCQ(List<MCQ> objectsToRun) {
+    public mcqExecutor(List<mcq> objectsToRun) {
         this.objectsToRun = objectsToRun;
     }
 

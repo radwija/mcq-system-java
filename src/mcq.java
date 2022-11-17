@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class MCQ {
+public class mcq {
     public String mcqSetName;
     public String filePath;
     public int amountOfField;
@@ -12,7 +12,7 @@ public class MCQ {
 
     private int correctAnswer;
 
-    public MCQ(String mcqSetName, String filePath, int amountOfField) {
+    public mcq(String mcqSetName, String filePath, int amountOfField) {
         this.mcqSetName = mcqSetName;
         this.filePath = filePath;
         this.amountOfField = amountOfField;
@@ -70,7 +70,7 @@ public class MCQ {
 
     public static void main(String[] args) {
         String filePath = "src/question.csv";
-        MCQ q = new MCQ("Java Basic", filePath, 6);
+        mcq q = new mcq("Java Basic", filePath, 6);
 //        String[][] data = q.getQuestionData();
         System.out.println(q.questions.length);
         int correctAnswer = 0;
