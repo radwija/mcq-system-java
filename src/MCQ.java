@@ -64,14 +64,17 @@ public class MCQ {
             System.out.println("   c. " + this.questions[row][3]);
             System.out.println("   d. " + this.questions[row][4]);
             String correctAns = this.questions[row][5];
-            System.out.print("Input a, b, c, or d here: ");
-            String userAnswer = input.next();
+            String userAnswer;
+            do {
+                System.out.print("You can only input a, b, c, or d here: ");
+                userAnswer = input.next();
+            } while (!userAnswer.matches("[a-dA-D]"));
             if (correctAns.equalsIgnoreCase(userAnswer)) {
                 System.out.println("Great, your answer is correct!");
                 System.out.println("==============================");
                 correctAnswer++;
             } else {
-                System.out.println("Your answer is wrong. The right answer is "+ correctAns);
+                System.out.println("Your answer is wrong. The right answer is " + correctAns);
                 System.out.println("==============================");
             }
         }
