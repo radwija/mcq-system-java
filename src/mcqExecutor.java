@@ -15,7 +15,7 @@ public class mcqExecutor {
 
     public void executeMcq() {
         Scanner input = new Scanner(System.in);
-        System.out.print("Hello, how can we address you?\nEnter your name: ");
+        System.out.print("Hi, how can we address you?\nEnter your name: ");
         String nameInput = input.next();
         System.out.println("\nWelcome to our MCQ on IT, " + nameInput + ":)");
         System.out.println("Choose your Multiple Choice Question Set. The Options are: ");
@@ -24,7 +24,7 @@ public class mcqExecutor {
         }
         System.out.print("Input number: ");
         int chosenMcq = input.nextInt();
-        System.out.println("\nGood luck, " + nameInput + ".");
+        System.out.println("\nGood luck, " + nameInput + "!");
         this.chooseMcq(chosenMcq);
     }
 }

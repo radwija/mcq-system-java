@@ -60,25 +60,15 @@ public class mcq {
             System.out.println("   c. " + this.questions[row][3]);
             System.out.println("   d. " + this.questions[row][4]);
             String correctAns = this.questions[row][5];
-            System.out.print("Input your answer: ");
+            System.out.print("Input a, b, c, or d here: ");
             String userAnswer = input.next();
             if (correctAns.equalsIgnoreCase(userAnswer)) {
                 System.out.println("Benar");
                 correctAnswer++;
             } else {
-                System.out.println("Salah");
+                System.out.println("Your answer is wrong. The right answer is "+ correctAns);
             }
         }
     }
 
-    public static void main(String[] args) {
-        String filePath = "src/question.csv";
-        mcq q = new mcq("Java Basic", filePath, 6);
-//        String[][] data = q.getQuestionData();
-        System.out.println(q.questions.length);
-        int correctAnswer = 0;
-        Scanner input = new Scanner(System.in);
-        System.out.println("Your score: " + correctAnswer);
-
-    }
 }
