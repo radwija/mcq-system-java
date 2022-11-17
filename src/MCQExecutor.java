@@ -22,6 +22,10 @@ public class MCQExecutor {
         this.objectsToRun.get(orderOfMCQ - 1).doMCQ();
     }
 
+    public String getChosenMcqName(int orderOfMCQ) {
+        return this.objectsToRun.get(orderOfMCQ - 1).getMcqSetName();
+    }
+
     public void executeMcq() {
         Scanner input = new Scanner(System.in);
         System.out.print("Hi, how can we address you?\nEnter your name: ");
@@ -34,7 +38,8 @@ public class MCQExecutor {
         }
         System.out.print("Input number: ");
         int chosenMcq = input.nextInt();
-        System.out.println("\nGood luck, " + this.getName() + "!");
+        System.out.println("\n*** " + this.getChosenMcqName(chosenMcq) + " ***");
+        System.out.println("Good luck, " + this.getName() + "!");
         this.chooseMcq(chosenMcq);
     }
 }

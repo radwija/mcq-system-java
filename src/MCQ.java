@@ -67,7 +67,7 @@ public class MCQ {
             System.out.print("Input a, b, c, or d here: ");
             String userAnswer = input.next();
             if (correctAns.equalsIgnoreCase(userAnswer)) {
-                System.out.println("Benar");
+                System.out.println("Great, your answer is correct!");
                 correctAnswer++;
             } else {
                 System.out.println("Your answer is wrong. The right answer is "+ correctAns);
