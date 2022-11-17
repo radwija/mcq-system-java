@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class mcq {
+public class MCQ {
     private String mcqSetName;
     private String filePath;
     private int amountOfField;
     private String[][] questions;
     private int correctAnswer;
 
-    public mcq(String mcqSetName, String filePath, int amountOfField) {
+    public MCQ(String mcqSetName, String filePath, int amountOfField) {
         this.mcqSetName = mcqSetName;
         this.filePath = filePath;
         this.amountOfField = amountOfField;

@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class mcqExecutor {
-    private List<mcq> objectsToRun = new ArrayList<mcq>();
+public class MCQExecutor {
+    private List<MCQ> objectsToRun = new ArrayList<MCQ>();
     private String name;
 
-    public mcqExecutor(List<mcq> objectsToRun) {
+    public MCQExecutor(List<MCQ> objectsToRun) {
         this.objectsToRun = objectsToRun;
     }
 

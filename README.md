@@ -1,4 +1,4 @@
-# Summative Assessment | mcq Project
+# Summative Assessment | MCQ Project
 
 <table>
     <tr>
