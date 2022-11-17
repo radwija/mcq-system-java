@@ -79,12 +79,10 @@ public class MCQ {
                 userAnswer = input.next();
             } while (!userAnswer.matches("[a-dA-D]"));
             if (correctAns.equalsIgnoreCase(userAnswer)) {
-                System.out.println("Great, your answer is correct!");
-                System.out.println("==============================");
+                System.out.println("Great, your answer is correct!\n");
                 correctAnswer++;
             } else {
-                System.out.println("Your answer is wrong. The right answer is " + correctAns);
-                System.out.println("==============================");
+                System.out.println("Your answer is wrong. The right answer is " + correctAns + "\n");
             }
         }
         System.out.println("Your correct answer: " + this.getCorrectAnswer());
