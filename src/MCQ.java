@@ -10,6 +10,7 @@ public class MCQ {
     private int amountOfField;
     private String[][] questions;
     private int correctAnswer;
+    public double score;
 
     public MCQ(String mcqSetName, String filePath, int amountOfField) {
         this.mcqSetName = mcqSetName;
@@ -51,8 +52,16 @@ public class MCQ {
         return this.mcqSetName;
     }
 
+    public String showScore() {
+        return (correctAnswer * 100 / this.questions.length) + "%";
+    }
+
     public int getCorrectAnswer() {
         return this.correctAnswer;
+    }
+
+    public int getWrongAnswer() {
+        return this.getCorrectAnswer() - this.questions.length;
     }
 
     public void doMCQ() {
@@ -79,6 +88,8 @@ public class MCQ {
             }
         }
         System.out.println("Your correct answer: " + this.getCorrectAnswer());
+        System.out.println("<Name here>, you answered" + this.getCorrectAnswer() + "questions right, " + (this.questions.length - this.getCorrectAnswer()) + "questions wrong for total of " + this.questions.length + " questions.");
+        System.out.println("Your score: " + this.showScore());
     }
 
 }
