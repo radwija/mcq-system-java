@@ -51,6 +51,10 @@ public class mcq {
         return this.mcqSetName;
     }
 
+    public int getCorrectAnswer() {
+        return this.correctAnswer;
+    }
+
     public void doMCQ() {
         for (int row = 0; row < this.questions.length; row++) {
             Scanner input = new Scanner(System.in);
@@ -69,6 +73,7 @@ public class mcq {
                 System.out.println("Your answer is wrong. The right answer is "+ correctAns);
             }
         }
+        System.out.println("Your correct answer: " + this.getCorrectAnswer());
     }
 
 }
