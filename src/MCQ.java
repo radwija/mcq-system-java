@@ -8,7 +8,7 @@ public class MCQ {
     private String mcqSetName;
     private String filePath;
     private int amountOfField;
-    public String[][] questions;
+    private String[][] questions;
     private int correctAnswer;
     public double score;
 
@@ -28,21 +28,20 @@ public class MCQ {
             BufferedReader br = new BufferedReader(fr);
 
             while ((currentLine = br.readLine()) != null) {
-                String[] data = currentLine.split(delimiter);
                 recordList.add(currentLine);
             }
             int recordCount = recordList.size();
 
-//            String arrayToReturn[][] = new String[recordCount][this.amountOfField];
-//            String[] data;
-//
-//            for (int i = 0; i < recordCount; i++) {
-//                data = recordList.get(i).split(delimiter);
-//                for (int j = 0; j < data.length; j++) {
-//                    arrayToReturn[i][j] = data[j];
-//                }
-//            }
-//            this.questions = arrayToReturn;
+            String arrayToReturn[][] = new String[recordCount][this.amountOfField];
+            String[] data;
+
+            for (int i = 0; i < recordCount; i++) {
+                data = recordList.get(i).split(delimiter);
+                for (int j = 0; j < data.length; j++) {
+                    arrayToReturn[i][j] = data[j];
+                }
+            }
+            this.questions = arrayToReturn;
         } catch (Exception e) {
             System.out.println(e);
             this.questions = null;
@@ -65,24 +64,28 @@ public class MCQ {
         return this.getCorrectAnswer() - this.questions.length;
     }
 
-
     public void doMCQ() {
         for (int row = 0; row < this.questions.length; row++) {
             int emptyOption = 0;
-            for (int col = 0; col < this.amountOfField; col++) {
-                if (this.questions[row][col] == "") {
-                    emptyOption++;
-                }
-            }
             Scanner input = new Scanner(System.in);
             System.out.println((row + 1) + ". " + this.questions[row][0]);
-            for (int optionIndex = 1; optionIndex < (4 - emptyOption); optionIndex++) {
-                System.out.println(optionIndex + ". " + this.questions[row][optionIndex]);
+            for (int col = 1; col <= 4; col++) {
+                String character = "";
+                if (col == 1) {
+                    character = "a";
+                } else if (col == 2) {
+                    character = "b";
+                } else if (col == 3) {
+                    character = "c";
+                } else if (col == 4) {
+                    character = "c";
+                }
+                if (this.questions[row][col].equals("")) {
+                    emptyOption++;
+                } else {
+                    System.out.println("   " + character + ". " + this.questions[row][col]);
+                }
             }
-//            System.out.println("   a. " + this.questions[row][1]);
-//            System.out.println("   b. " + this.questions[row][2]);
-//            System.out.println("   c. " + this.questions[row][3]);
-//            System.out.println("   d. " + this.questions[row][4]);
             String correctAns = this.questions[row][5];
             String userAnswer;
             do {
@@ -90,10 +93,12 @@ public class MCQ {
                 userAnswer = input.next();
             } while (!userAnswer.matches("[a-dA-D]"));
             if (correctAns.equalsIgnoreCase(userAnswer)) {
-                System.out.println("Great, your answer is correct!\n");
+                System.out.println("Great, your answer is correct!");
+                System.out.println("==============================");
                 correctAnswer++;
             } else {
-                System.out.println("Your answer is wrong. The right answer is " + correctAns + "\n");
+                System.out.println("Your answer is wrong. The right answer is " + correctAns);
+                System.out.println("==============================");
             }
         }
         System.out.println("Your correct answer: " + this.getCorrectAnswer());
