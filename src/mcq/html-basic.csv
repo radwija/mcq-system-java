@@ -1,6 +1,7 @@
 What does the abbreviation HTML stand for?,HyperText Markup Language.,HighText Markup Language.,HyperText Markdown Language.,None of the above.,a,1
 How many sizes of headers are available in HTML by default?,5,1,6,,c,1
 Which of the these tags below are correct?,<head></head>,<link></link>,<div></div>,<href></href>,a&c,2
+Which of the these statements below are correct?,HTML is for web development,HTML has Arithmetic Operators,HTML form can be styled by CSS,HTML file is .html,a&c&d,3
 What is the smallest header in HTML by default?,h1,h2,h6,h4,c,1
 What are the types of lists available in HTML?,Ordered; Unordered Lists.,Bulleted; Numbered Lists.,Named; Unnamed Lists.,None of the above.,a,1
 How to create an ordered list in HTML?,<ul>,<ol>,<href>,<b>,b,1

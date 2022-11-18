@@ -70,8 +70,12 @@ public class MCQ {
         return this.mcqSetName;
     }
 
+    public void setScore() {
+        this.score = userCorrectAnswer * 100 / this.questions.length;
+    }
+
     public String showScore() {
-        return (userCorrectAnswer * 100 / this.questions.length) + "%";
+        return this.score + "%";
     }
 
     public int getuserCorrectAnswer() {
@@ -197,6 +201,7 @@ public class MCQ {
                 System.out.println("   ❌ Your answer is wrong. The right answer is " + correctAns[0] + ". " + correctAnsText);
             }
         }
+        this.setScore();
         System.out.println("Your correct answer: " + this.getuserCorrectAnswer());
         System.out.println(this.getName() + this.getStatus());
         System.out.println("Your score: " + this.showScore());
