@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -44,8 +46,12 @@ public class MCQ {
                 }
             }
             this.questions = arrayToReturn;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
             this.questions = null;
         }
     }
@@ -81,9 +87,12 @@ public class MCQ {
 
     public void doMCQ() {
         Scanner input = new Scanner(System.in);
+
         for (int row = 0; row < this.questions.length; row++) {
-            System.out.println((row + 1) + ". " + this.questions[row][0]);
-            String character = "";
+            System.out.println("~ Question "+(row + 1) + " ~\n" + this.questions[row][0]);
+            String character = null;
+            String range = null;
+            int emptyOptions = 0;
             for (int col = 1; col <= 4; col++) {
                 if (col == 1) {
                     character = "a";
@@ -95,7 +104,16 @@ public class MCQ {
                     character = "d";
                 }
                 if (this.questions[row][col].equals("")) {
-                    // Do nothing (skipping the empty options).
+                    emptyOptions++;
+                    if (emptyOptions == 1) {
+                        range = "a";
+                    } else if (emptyOptions == 2) {
+                        range = "b";
+                    } else if (emptyOptions == 3) {
+                        range = "c";
+                    } else if (emptyOptions == 4) {
+                        range = "d";
+                    }
                 } else {
                     System.out.println("   " + character + ". " + this.questions[row][col]);
                 }
@@ -104,23 +122,31 @@ public class MCQ {
             String correctAnsText = null;
             if (correctAns.equals("a")) {
                 correctAnsText = questions[row][1];
-            }else if (correctAns.equals("b")) {
+            } else if (correctAns.equals("b")) {
                 correctAnsText = questions[row][2];
-            }else if (correctAns.equals("c")) {
+            } else if (correctAns.equals("c")) {
                 correctAnsText = questions[row][3];
-            }else if (correctAns.equals("d")) {
+            } else if (correctAns.equals("d")) {
                 correctAnsText = questions[row][4];
             }
             String userAnswer;
-            do {
-                System.out.print("Input the available options: ");
-                userAnswer = input.next();
-            } while (!userAnswer.matches("[a-dA-D]"));
+
+            if (emptyOptions > 0) {
+                do {
+                    System.out.print(">> Input the available options: ");
+                    userAnswer = input.next();
+                } while (!userAnswer.matches("[a-" + range + "A-" + range.toUpperCase() + "]"));
+            } else {
+                do {
+                    System.out.print(">> Input the available options: ");
+                    userAnswer = input.next();
+                } while (!userAnswer.matches("[a-dA-D]"));
+            }
             if (correctAns.equalsIgnoreCase(userAnswer)) {
-                System.out.println("Great, your answer is correct!\n");
+                System.out.println("   ✅ Great, your answer is correct!\n");
                 correctAnswer++;
             } else {
-                System.out.println("Your answer is wrong. The right answer is " + correctAns + ". " + correctAnsText +"\n");
+                System.out.println("   ❌ Your answer is wrong. The right answer is " + correctAns + ". " + correctAnsText + "\n");
             }
         }
         System.out.println("Your correct answer: " + this.getCorrectAnswer());

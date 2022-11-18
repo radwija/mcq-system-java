@@ -32,19 +32,19 @@ public class MCQExecutor {
 
     public void executeMcq() {
         Scanner input = new Scanner(System.in);
-        System.out.print("Hi, how can we address you?\nEnter your name: ");
+        System.out.print("Hi, how can we address you?\n>> Enter your name: ");
         String nameInput = input.nextLine();
         this.setName(nameInput);
         System.out.println("\nWelcome to our MCQ on IT, " + this.getName() + ":)");
         System.out.println("Choose your Multiple Choice Question Set. The Options are: ");
         for (int i = 0; i < this.objectsToRun.size(); i++) {
-            System.out.println((i + 1) + ". " + this.objectsToRun.get(i).getMcqSetName());
+            System.out.println("   " + (i + 1) + ". " + this.objectsToRun.get(i).getMcqSetName());
         }
         int chosenMcq = 0;
         boolean isNumber;
         do {
             do {
-                System.out.print("Input number: ");
+                System.out.print(">> Input number: ");
                 if (input.hasNextInt()) {
                     chosenMcq = input.nextInt();
                     isNumber = true;
