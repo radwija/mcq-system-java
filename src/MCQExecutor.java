@@ -22,6 +22,10 @@ public class MCQExecutor {
         this.objectsToRun.get(orderOfMCQ - 1).doMCQ();
     }
 
+    public void setNameToChosenMCQ(int orderOfMCQ, String nameInput) {
+        this.objectsToRun.get(orderOfMCQ - 1).setName(nameInput);
+    }
+
     public String getChosenMcqName(int orderOfMCQ) {
         return this.objectsToRun.get(orderOfMCQ - 1).getMcqSetName();
     }
@@ -56,6 +60,7 @@ public class MCQExecutor {
         } while (chosenMcq > this.objectsToRun.size());
         System.out.println("\n*** " + this.getChosenMcqName(chosenMcq) + " ***");
         System.out.println("Good luck, " + this.getName() + "!");
+        this.setNameToChosenMCQ(chosenMcq, nameInput);
         this.chooseMcq(chosenMcq);
     }
 }

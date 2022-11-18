@@ -8,4 +8,5 @@ Select the valid statement.,char[] ch = new char(5),char[] ch = new char[5],char
 When is the object created with new keyword?,At run time,At compile time,Depends on the code,None,a
 Identify the corrected definition of a package.,A package is a collection of editing tools,A package is a collection of classes,A package is a collection of classes and interfaces,A package is a collection of interfaces,c
 In which of the following is toString() method defined?,java.lang.Object,java.lang.String,java.lang.util,None,a
-Double answer,True,False,,,a
+James Gosling is father of Java.,True,False,,,a
+Java was invented in 1990.,True,False,,,b
