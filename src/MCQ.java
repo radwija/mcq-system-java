@@ -90,7 +90,7 @@ public class MCQ {
         Scanner input = new Scanner(System.in);
 
         for (int row = 0; row < this.questions.length; row++) {
-            System.out.println("~ Question " + (row + 1) + " ~\n" + this.questions[row][0]);
+            System.out.println("\n~ Question " + (row + 1) + " ~\n" + this.questions[row][0]);
             int noOfAnswerNeeded = Integer.parseInt(this.questions[row][6]);
             if (noOfAnswerNeeded > 1) {
                 System.out.println(noOfAnswerNeeded + " answers needed *");
@@ -177,7 +177,7 @@ public class MCQ {
                 }
             }
             if (userAnswer.containsAll(Arrays.asList(correctAns))) {
-                System.out.println("   ✅ Great, your answer is correct!\n");
+                System.out.println("   ✅ Great, your answer is correct!");
                 userCorrectAnswer++;
             } else if (correctAns.length > 1) {
                 System.out.println("   ❌ Your answers are wrong. The right answer are");
@@ -186,7 +186,7 @@ public class MCQ {
                 }
 
             } else {
-                System.out.println("   ❌ Your answer is wrong. The right answer is " + correctAns[0] + ". " + correctAnsText + "\n");
+                System.out.println("   ❌ Your answer is wrong. The right answer is " + correctAns[0] + ". " + correctAnsText);
             }
         }
         System.out.println("Your correct answer: " + this.getuserCorrectAnswer());
