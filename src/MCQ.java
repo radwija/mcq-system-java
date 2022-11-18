@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,15 +13,15 @@ public class MCQ {
     private String name;
 
     private int amountOfField;
-    private String[][] questions;
-    private int correctAnswer;
+    public String[][] questions;
+    private int userCorrectAnswer;
     public double score;
 
     public MCQ(String mcqSetName, String filePath, int amountOfField) {
         this.mcqSetName = mcqSetName;
         this.filePath = filePath;
         this.amountOfField = amountOfField;
-        correctAnswer = 0;
+        userCorrectAnswer = 0;
 
         // Construct MCQ set
         List<String> recordList = new ArrayList<String>();
@@ -70,26 +71,26 @@ public class MCQ {
     }
 
     public String showScore() {
-        return (correctAnswer * 100 / this.questions.length) + "%";
+        return (userCorrectAnswer * 100 / this.questions.length) + "%";
     }
 
-    public int getCorrectAnswer() {
-        return this.correctAnswer;
+    public int getuserCorrectAnswer() {
+        return this.userCorrectAnswer;
     }
 
     public int getWrongAnswer() {
-        return this.getCorrectAnswer() - this.questions.length;
+        return this.getuserCorrectAnswer() - this.questions.length;
     }
 
     public String getStatus() {
-        return ", you answered " + this.getCorrectAnswer() + " questions right, " + (this.questions.length - this.getCorrectAnswer()) + " questions wrong for total of " + this.questions.length + " questions.";
+        return ", you answered " + this.getuserCorrectAnswer() + " questions right, " + (this.questions.length - this.getuserCorrectAnswer()) + " questions wrong for total of " + this.questions.length + " questions.";
     }
 
     public void doMCQ() {
         Scanner input = new Scanner(System.in);
 
         for (int row = 0; row < this.questions.length; row++) {
-            System.out.println("~ Question "+(row + 1) + " ~\n" + this.questions[row][0]);
+            System.out.println("~ Question " + (row + 1) + " ~\n" + this.questions[row][0]);
             String character = null;
             String range = null;
             int emptyOptions = 0;
@@ -116,38 +117,55 @@ public class MCQ {
                     System.out.println("   " + character + ". " + this.questions[row][col]);
                 }
             }
-            String correctAns = this.questions[row][5];
-            String correctAnsText = null;
-            if (correctAns.equals("a")) {
+            String[] correctAns = this.questions[row][5].split("&");
+            String correctAnsText = "";
+            if (Arrays.asList(correctAns).contains("a")) {
                 correctAnsText = questions[row][1];
-            } else if (correctAns.equals("b")) {
+            } else if (Arrays.asList(correctAns).contains("b")) {
                 correctAnsText = questions[row][2];
-            } else if (correctAns.equals("c")) {
+            } else if (Arrays.asList(correctAns).contains("c")) {
                 correctAnsText = questions[row][3];
-            } else if (correctAns.equals("d")) {
+            } else if (Arrays.asList(correctAns).contains("d")) {
                 correctAnsText = questions[row][4];
             }
-            String userAnswer;
-
-            if (emptyOptions > 0) {
-                do {
-                    System.out.print(">> Input the available options: ");
-                    userAnswer = input.next();
-                } while (!userAnswer.matches("[a-" + range + "A-" + range.toUpperCase() + "]"));
-            } else {
-                do {
-                    System.out.print(">> Input the available options: ");
-                    userAnswer = input.next();
-                } while (!userAnswer.matches("[a-dA-D]"));
+            String userInput;
+            List<String> userAnswer = new ArrayList<String>();
+            for (int i = 0; i < Integer.parseInt(this.questions[row][6]); i++) {
+                if (emptyOptions > 0) {
+                    do {
+                        System.out.print(">> Input the available options: ");
+                        userInput = input.next();
+                    } while (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]"));
+                    userAnswer.add(userInput.toLowerCase());
+                } else if (Integer.parseInt(this.questions[row][6]) > 1) {
+                    do {
+                        System.out.print(">> Input the available options: ");
+                        userInput = input.next();
+                    } while (!userInput.matches("[a-dA-D]"));
+                    userAnswer.add(userInput.toLowerCase());
+                } else {
+                    do {
+                        System.out.print(">> Input the available options: ");
+                        userInput = input.next();
+                    } while (!userInput.matches("[a-dA-D]"));
+                    userAnswer.add(userInput.toLowerCase());
+                }
             }
-            if (correctAns.equalsIgnoreCase(userAnswer)) {
+
+            if (userAnswer.containsAll(Arrays.asList(correctAns))) {
                 System.out.println("   ✅ Great, your answer is correct!\n");
-                correctAnswer++;
+                userCorrectAnswer++;
+            } else if (correctAns.length > 1) {
+                System.out.println("   ❌ Your answers are wrong. The right answer are");
+                for (int j = 0; j < correctAns.length; j++) {
+                    System.out.println("      " + correctAns[j] + ". " + correctAnsText);
+                }
+
             } else {
-                System.out.println("   ❌ Your answer is wrong. The right answer is " + correctAns + ". " + correctAnsText + "\n");
+                System.out.println("   ❌ Your answer is wrong. The right answer is " + correctAns[0] + ". " + correctAnsText + "\n");
             }
         }
-        System.out.println("Your correct answer: " + this.getCorrectAnswer());
+        System.out.println("Your correct answer: " + this.getuserCorrectAnswer());
         System.out.println(this.getName() + this.getStatus());
         System.out.println("Your score: " + this.showScore());
     }

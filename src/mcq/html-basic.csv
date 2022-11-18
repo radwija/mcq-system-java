@@ -1,10 +1,11 @@
-What does the abbreviation HTML stand for?,HyperText Markup Language.,HighText Markup Language.,HyperText Markdown Language.,None of the above.,a
-How many sizes of headers are available in HTML by default?,5,1,3,6,d
-What is the smallest header in HTML by default?,h1,h2,h6,h4,c
-What are the types of lists available in HTML?,Ordered; Unordered Lists.,Bulleted; Numbered Lists.,Named; Unnamed Lists.,None of the above.,a
-How to create an ordered list in HTML?,<ul>,<ol>,<href>,<b>,b
-HTML files are saved by default with the extension?,.html,.h,.ht,None of the above,a
-We enclose HTML tags within?,{},<>,!!,None of the above,b
-What is the effect of the <b> tag?,It converts the text within it to bold font.,It is used to write black-colored font.,It is used to change the font size.,None of the above.,a
-Which of the following is correct about HTML?,HTML uses User Defined Tags.,HTML uses tags defined within the language.,Both A and B.,None of the above.,b
-How to display preformatted text in HTML?,<p>,<pre>,<hr>,All of the above,b
+Multiple Answer,correctAnswer1,correctAnswer2,answer3,answer4,a&b,2
+What does the abbreviation HTML stand for?,HyperText Markup Language.,HighText Markup Language.,HyperText Markdown Language.,None of the above.,a,1
+How many sizes of headers are available in HTML by default?,5,1,3,6,d,1
+What is the smallest header in HTML by default?,h1,h2,h6,h4,c,1
+What are the types of lists available in HTML?,Ordered; Unordered Lists.,Bulleted; Numbered Lists.,Named; Unnamed Lists.,None of the above.,a,1
+How to create an ordered list in HTML?,<ul>,<ol>,<href>,<b>,b,1
+HTML files are saved by default with the extension?,.html,.h,.ht,None of the above,a,1
+We enclose HTML tags within?,{},<>,!!,None of the above,b,1
+What is the effect of the <b> tag?,It converts the text within it to bold font.,It is used to write black-colored font.,It is used to change the font size.,None of the above.,a,1
+Which of the following is correct about HTML?,HTML uses User Defined Tags.,HTML uses tags defined within the language.,Both A and B.,None of the above.,b,1
+How to display preformatted text in HTML?,<p>,<pre>,<hr>,All of the above,b,1

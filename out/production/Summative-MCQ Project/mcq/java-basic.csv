@@ -1,15 +1,15 @@
-Number of primitive data types in Java are?,6,7,8,9,b
-What is the size of float and double in java?,32 and 64,32 and 32,64 and 64,64 and 32,a
-James Gosling is father of Java.,True,False,,,a
-Java was invented in 1990.,True,False,,,b
-Identify the return type of a method that does not return any value.,int,void,String,,b
-What is the implicit return type of constructor?,No return type,A class object in which it is defined,void,,b
-Identify the modifier which cannot be used for constructor.,private,protected,static,,c
-Which of the following lines of code creates a variable to store the text "Hello World"?,myString = "Hello World";,String myString = "Hello World";,String myString = Hello World;,"Hello World" = String myString;,b
-What is the result of the following expression? 1 + 3 / 2 - 7 % 3,4,2,1,5,c
-What is the syntax for declaring a static method?,Public static void myMethod() {},public static myMethod();,public static class myMethod();,public class myMethod() {},a
-What is the result of the following code? System.out.println(“12” + 1 + 2);,15,"123","15","1212",d
-Select the valid statement.,char[] ch = new char(5),char[] ch = new char[5],char[] ch = new char(),char[] ch = new char[],b
-When is the object created with new keyword?,At run time,At compile time,Depends on the code,None,a
-Identify the corrected definition of a package.,A package is a collection of editing tools,A package is a collection of classes,A package is a collection of classes and interfaces,A package is a collection of interfaces,c
-In which of the following is toString() method defined?,java.lang.Object,java.lang.String,java.lang.util,None,a
+Number of primitive data types in Java are?,6,7,8,9,b,1
+What is the size of float and double in java?,32 and 64,32 and 32,64 and 64,64 and 32,a,1
+James Gosling is father of Java.,True,False,,,a,1
+Java was invented in 1990.,True,False,,,b,1
+Identify the return type of a method that does not return any value.,int,void,String,,b,1
+What is the implicit return type of constructor?,No return type,A class object in which it is defined,void,,b,1
+Identify the modifier which cannot be used for constructor.,private,protected,static,,c,1
+Which of the following lines of code creates a variable to store the text "Hello World"?,myString = "Hello World";,String myString = "Hello World";,String myString = Hello World;,"Hello World" = String myString;,b,1
+What is the result of the following expression? 1 + 3 / 2 - 7 % 3,4,2,1,5,c,1
+What is the syntax for declaring a static method?,Public static void myMethod() {},public static myMethod();,public static class myMethod();,public class myMethod() {},a,1
+What is the result of the following code? System.out.println(“12” + 1 + 2);,15,"123","15","1212",d,1
+Select the valid statement.,char[] ch = new char(5),char[] ch = new char[5],char[] ch = new char(),char[] ch = new char[],b,1
+When is the object created with new keyword?,At run time,At compile time,Depends on the code,None,a,1
+Identify the corrected definition of a package.,A package is a collection of editing tools,A package is a collection of classes,A package is a collection of classes and interfaces,A package is a collection of interfaces,c,1
+In which of the following is toString() method defined?,java.lang.Object,java.lang.String,java.lang.util,None,a,1
