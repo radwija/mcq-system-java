@@ -10,23 +10,23 @@ public class MCQExecutor {
         this.objectsToRun = objectsToRun;
     }
 
-    public void setName(String inputName) {
+    private void setName(String inputName) {
         this.name = inputName;
     }
 
-    public String getName() {
+    private String getName() {
         return this.name;
     }
 
-    public void chooseMcq(int orderOfMCQ) {
+    private void chooseMcq(int orderOfMCQ) {
         this.objectsToRun.get(orderOfMCQ - 1).doMCQ();
     }
 
-    public void setNameToChosenMCQ(int orderOfMCQ, String nameInput) {
+    private void setNameToChosenMCQ(int orderOfMCQ, String nameInput) {
         this.objectsToRun.get(orderOfMCQ - 1).setName(nameInput);
     }
 
-    public String getChosenMcqName(int orderOfMCQ) {
+    private String getChosenMcqName(int orderOfMCQ) {
         return this.objectsToRun.get(orderOfMCQ - 1).getMcqSetName();
     }
 
