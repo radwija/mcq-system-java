@@ -8,10 +8,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MCQ {
-    private String mcqSetName;
-    private String filePath;
+    private final String mcqSetName;
+    private final String filePath;
     private String name;
-
     private int amountOfField;
     public String[][] questions;
     private int userCorrectAnswer;
