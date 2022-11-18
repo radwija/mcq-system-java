@@ -91,6 +91,10 @@ public class MCQ {
 
         for (int row = 0; row < this.questions.length; row++) {
             System.out.println("~ Question " + (row + 1) + " ~\n" + this.questions[row][0]);
+            int noOfAnswerNeeded = Integer.parseInt(this.questions[row][6]);
+            if (noOfAnswerNeeded > 1) {
+                System.out.println(noOfAnswerNeeded + " answers needed *");
+            }
             String character = null;
             String range = null;
             int emptyOptions = 0;
@@ -119,11 +123,48 @@ public class MCQ {
             }
             String[] correctAns = this.questions[row][5].split("&");
             List<String> optionTexts = new ArrayList<String>();
+            String correctAnsText = "";
+            if (Arrays.asList(correctAns).contains("a")) {
+                correctAnsText = questions[row][1];
+            } else if (Arrays.asList(correctAns).contains("b")) {
+                correctAnsText = questions[row][2];
+            } else if (Arrays.asList(correctAns).contains("c")) {
+                correctAnsText = questions[row][3];
+            } else if (Arrays.asList(correctAns).contains("d")) {
+                correctAnsText = questions[row][4];
+            }
+
+            String userInput;
+            List<String> userAnswer = new ArrayList<String>();
+            for (int i = 0; i < noOfAnswerNeeded; i++) {
+                if (emptyOptions > 0) {
+                    do {
+                        System.out.print(">> Input the available options: ");
+                        userInput = input.next();
+                    } while (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]"));
+                    userAnswer.add(userInput.toLowerCase());
+                } else if (noOfAnswerNeeded > 1) {
+                    do {
+                        System.out.print(">> Input the available options: ");
+                        userInput = input.next().toLowerCase();
+                        if (userAnswer.contains(userInput)) {
+                            System.out.println("   You can't input the same input as before!");
+                        }
+                    } while (!userInput.matches("[a-dA-D]") || userAnswer.contains(userInput));
+                    userAnswer.add(userInput);
+                } else {
+                    do {
+                        System.out.print(">> Input the available options: ");
+                        userInput = input.next();
+                    } while (!userInput.matches("[a-dA-D]"));
+                    userAnswer.add(userInput.toLowerCase());
+                }
+            }
+
             optionTexts.add(questions[row][1]);
             optionTexts.add(questions[row][2]);
             optionTexts.add(questions[row][3]);
             optionTexts.add(questions[row][4]);
-            String correctAnsText = "";
             String optionA_Text = "";
             String optionB_Text = "";
             String optionC_Text = "";
@@ -135,43 +176,6 @@ public class MCQ {
                     }
                 }
             }
-            else {
-                if (Arrays.asList(correctAns).contains("a")) {
-                    correctAnsText = questions[row][1];
-                } else if (Arrays.asList(correctAns).contains("b")) {
-                    correctAnsText = questions[row][2];
-                } else if (Arrays.asList(correctAns).contains("c")) {
-                    correctAnsText = questions[row][3];
-                } else if (Arrays.asList(correctAns).contains("d")) {
-                    correctAnsText = questions[row][4];
-                }
-            }
-
-            String userInput;
-            List<String> userAnswer = new ArrayList<String>();
-            int noOfAnswerNeeded = Integer.parseInt(this.questions[row][6]);
-            for (int i = 0; i < noOfAnswerNeeded; i++) {
-                if (emptyOptions > 0) {
-                    do {
-                        System.out.print(">> Input the available options: ");
-                        userInput = input.next();
-                    } while (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]"));
-                    userAnswer.add(userInput.toLowerCase());
-                } else if (noOfAnswerNeeded > 1) {
-                    do {
-                        System.out.print(">> Input the available options: ");
-                        userInput = input.next();
-                    } while (!userInput.matches("[a-dA-D]"));
-                    userAnswer.add(userInput.toLowerCase());
-                } else {
-                    do {
-                        System.out.print(">> Input the available options: ");
-                        userInput = input.next();
-                    } while (!userInput.matches("[a-dA-D]"));
-                    userAnswer.add(userInput.toLowerCase());
-                }
-            }
-
             if (userAnswer.containsAll(Arrays.asList(correctAns))) {
                 System.out.println("   ✅ Great, your answer is correct!\n");
                 userCorrectAnswer++;

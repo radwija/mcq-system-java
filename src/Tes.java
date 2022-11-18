@@ -12,6 +12,8 @@ public class Tes {
         userInput.add("b");
         userInput.add("a");
 
+        System.out.println("Ini " +userInput.contains("a"));
+
         System.out.println("jawaban:" + Arrays.toString(array2));
         System.out.println("input: " + userInput);
         System.out.println(userInput.containsAll(Arrays.asList(array2)));
