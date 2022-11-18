@@ -77,16 +77,16 @@ public class MCQ {
         return this.score + "%";
     }
 
-    public int getuserCorrectAnswer() {
+    public int getUserCorrectAnswer() {
         return this.userCorrectAnswer;
     }
 
     public int getWrongAnswer() {
-        return this.getuserCorrectAnswer() - this.questions.length;
+        return this.getUserCorrectAnswer() - this.questions.length;
     }
 
     public String getStatus() {
-        return ", you answered " + this.getuserCorrectAnswer() + " questions right, " + (this.questions.length - this.getuserCorrectAnswer()) + " questions wrong for total of " + this.questions.length + " questions.";
+        return ", you answered " + this.getUserCorrectAnswer() + " questions right, " + (this.questions.length - this.getUserCorrectAnswer()) + " questions wrong for total of " + this.questions.length + " questions.";
     }
 
     public void doMCQ() {
@@ -201,7 +201,7 @@ public class MCQ {
             }
         }
         this.setScore();
-        System.out.println("Your correct answer: " + this.getuserCorrectAnswer());
+        System.out.println("Your correct answer: " + this.getUserCorrectAnswer());
         System.out.println(this.getName() + this.getStatus());
         System.out.println("Your score: " + this.showScore());
     }
