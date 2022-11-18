@@ -49,13 +49,13 @@ public class MCQExecutor {
                     chosenMcq = input.nextInt();
                     isNumber = true;
                 } else {
-                    System.out.println("Your input is invalid!");
+                    System.out.println("   Your input is invalid!");
                     isNumber = false;
                     input.next();
                 }
             } while (!(isNumber));
             if (chosenMcq > this.objectsToRun.size()) {
-                System.out.println("Your input is out of range!");
+                System.out.println("   Your input is out of range!");
             }
         } while (chosenMcq > this.objectsToRun.size());
         System.out.println("\n*** " + this.getChosenMcqName(chosenMcq) + " ***");
