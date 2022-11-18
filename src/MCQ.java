@@ -109,7 +109,7 @@ public class MCQ {
                     character = "d";
                 }
                 if (this.questions[row][col].equals("")) { // Determine range of character that user can input to answer
-                    emptyOptions++;
+                    emptyOptions++; // Determine how many there are empty question
                     if (emptyOptions == 1) {
                         range = "c";
                     } else if (emptyOptions == 2) {
@@ -121,9 +121,10 @@ public class MCQ {
                     System.out.println("   " + character + ". " + this.questions[row][col]);
                 }
             }
-            String[] correctAns = this.questions[row][5].split("&");
+            String[] correctAns = this.questions[row][5].split("&"); // Separate the correct answer as array
             List<String> optionTexts = new ArrayList<String>();
             String correctAnsText = "";
+            // Getting the correct answer text to be shown in answer correction
             if (Arrays.asList(correctAns).contains("a")) {
                 correctAnsText = questions[row][1];
             } else if (Arrays.asList(correctAns).contains("b")) {
@@ -135,7 +136,7 @@ public class MCQ {
             }
 
             String userInput;
-            List<String> userAnswer = new ArrayList<String>();
+            List<String> userAnswer = new ArrayList<String>(); // Make user able to input multiple answer. Once user input the input added into the array list.
             for (int i = 0; i < noOfAnswerNeeded; i++) {
                 if (noOfAnswerNeeded == 1) {
                     if (emptyOptions > 0) {
