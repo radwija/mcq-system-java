@@ -118,26 +118,46 @@ public class MCQ {
                 }
             }
             String[] correctAns = this.questions[row][5].split("&");
+            List<String> optionTexts = new ArrayList<String>();
+            optionTexts.add(questions[row][1]);
+            optionTexts.add(questions[row][2]);
+            optionTexts.add(questions[row][3]);
+            optionTexts.add(questions[row][4]);
             String correctAnsText = "";
-            if (Arrays.asList(correctAns).contains("a")) {
-                correctAnsText = questions[row][1];
-            } else if (Arrays.asList(correctAns).contains("b")) {
-                correctAnsText = questions[row][2];
-            } else if (Arrays.asList(correctAns).contains("c")) {
-                correctAnsText = questions[row][3];
-            } else if (Arrays.asList(correctAns).contains("d")) {
-                correctAnsText = questions[row][4];
+            String optionA_Text = "";
+            String optionB_Text = "";
+            String optionC_Text = "";
+            String optionD_Text = "";
+            if (correctAns.length > 1) {
+                for (int i = 0; i < correctAns.length; i++) {
+                    if (correctAns[i].equals("a")) {
+                        optionA_Text = questions[row][1];
+                    }
+                }
             }
+            else {
+                if (Arrays.asList(correctAns).contains("a")) {
+                    correctAnsText = questions[row][1];
+                } else if (Arrays.asList(correctAns).contains("b")) {
+                    correctAnsText = questions[row][2];
+                } else if (Arrays.asList(correctAns).contains("c")) {
+                    correctAnsText = questions[row][3];
+                } else if (Arrays.asList(correctAns).contains("d")) {
+                    correctAnsText = questions[row][4];
+                }
+            }
+
             String userInput;
             List<String> userAnswer = new ArrayList<String>();
-            for (int i = 0; i < Integer.parseInt(this.questions[row][6]); i++) {
+            int noOfAnswerNeeded = Integer.parseInt(this.questions[row][6]);
+            for (int i = 0; i < noOfAnswerNeeded; i++) {
                 if (emptyOptions > 0) {
                     do {
                         System.out.print(">> Input the available options: ");
                         userInput = input.next();
                     } while (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]"));
                     userAnswer.add(userInput.toLowerCase());
-                } else if (Integer.parseInt(this.questions[row][6]) > 1) {
+                } else if (noOfAnswerNeeded > 1) {
                     do {
                         System.out.print(">> Input the available options: ");
                         userInput = input.next();
