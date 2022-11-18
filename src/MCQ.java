@@ -15,7 +15,7 @@ public class MCQ {
     private int amountOfField;
     public String[][] questions;
     private int userCorrectAnswer;
-    public double score;
+    public int score;
 
     public MCQ(String mcqSetName, String filePath, int amountOfField) {
         this.mcqSetName = mcqSetName;

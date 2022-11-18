@@ -1,0 +1,10 @@
+CSS stands for?,Common style sheets,Control style sheets,Central style sheets,Cascading Style Sheets,d,1
+How do you insert a comment in a CSS file?,//this is a comment//,/this is a comment/,/*this is a comment*/,This is a comment,c,1
+How many types of levels in style sheets?,One levels,Two levels,Three levels,Four levels,c,1
+Stylesheet appears as a value of the ______ attribute.,style,jscript,sheet,nscript,a,1
+What is the correct HTML for referring to an external style sheet?,< link rel=”stylesheet” type=”text/css” href=”mystyle.css” >,< style src=”mystyle.css” >,< stylesheet>mystyle.css,< a src=”mystyle.css” >,a,1
+Which is the correct CSS syntax?,body:color=black;,body {color:black;},{body:color:black;},{body:color=black;},b,1
+What is CSS Float?,allows other element to wrap around an element,element can be pushed to the left to right,element can be pushed to any direction,option4,a&b,2
+Which CSS property controls the text size?,text-size,text-style,font-size,font-style,c,1
+What is the correct CSS syntax for making all the <p> elements bold?,< p style="text-size:bold;" >,p {text-size:bold;},p {font-weight:bold;},< p style="font-size:bold;" >,c,1
+How do you display hyperlinks without an underline?,a {underline:none;},a {decoration:no-underline;},a {text-decoration:none;},a {text-decoration:no-underline;},c,1
