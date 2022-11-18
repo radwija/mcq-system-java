@@ -137,51 +137,58 @@ public class MCQ {
             String userInput;
             List<String> userAnswer = new ArrayList<String>();
             for (int i = 0; i < noOfAnswerNeeded; i++) {
-                if (emptyOptions > 0) {
-                    do {
-                        System.out.print(">> Input the available options: ");
-                        userInput = input.next();
-                    } while (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]"));
-                    userAnswer.add(userInput.toLowerCase());
+                if (noOfAnswerNeeded == 1) {
+                    if (emptyOptions > 0) {
+                        do {
+                            System.out.print(">> Input the available options: ");
+                            userInput = input.next();
+                        } while (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]"));
+                        userAnswer.add(userInput.toLowerCase());
+                    } else {
+                        do {
+                            System.out.print(">> Input the available options: ");
+                            userInput = input.next();
+                        } while (!userInput.matches("[a-dA-D]"));
+                        userAnswer.add(userInput.toLowerCase());
+                    }
                 } else if (noOfAnswerNeeded > 1) {
-                    do {
-                        System.out.print(">> Input the available options: ");
-                        userInput = input.next().toLowerCase();
-                        if (userAnswer.contains(userInput)) {
-                            System.out.println("   You can't input the same input as before!");
-                        }
-                    } while (!userInput.matches("[a-dA-D]") || userAnswer.contains(userInput));
-                    userAnswer.add(userInput);
-                } else {
-                    do {
-                        System.out.print(">> Input the available options: ");
-                        userInput = input.next();
-                    } while (!userInput.matches("[a-dA-D]"));
-                    userAnswer.add(userInput.toLowerCase());
-                }
-            }
-
-            optionTexts.add(questions[row][1]);
-            optionTexts.add(questions[row][2]);
-            optionTexts.add(questions[row][3]);
-            optionTexts.add(questions[row][4]);
-            String optionA_Text = "";
-            String optionB_Text = "";
-            String optionC_Text = "";
-            String optionD_Text = "";
-            if (correctAns.length > 1) {
-                for (int i = 0; i < correctAns.length; i++) {
-                    if (correctAns[i].equals("a")) {
-                        optionA_Text = questions[row][1];
+                    if (emptyOptions > 0) {
+                        do {
+                            System.out.print(">> Input the available options: ");
+                            userInput = input.next().toLowerCase();
+                            if (userAnswer.contains(userInput)) {
+                                System.out.println("   You can't input the same input as before!");
+                            }
+                        } while (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]"));
+                        userAnswer.add(userInput);
+                    } else {
+                        do {
+                            System.out.print(">> Input the available options: ");
+                            userInput = input.next().toLowerCase();
+                            if (userAnswer.contains(userInput)) {
+                                System.out.println("   You can't input the same input as before!");
+                            }
+                        } while (!userInput.matches("[a-dA-D]") || userAnswer.contains(userInput));
+                        userAnswer.add(userInput);
                     }
                 }
             }
+
             if (userAnswer.containsAll(Arrays.asList(correctAns))) {
                 System.out.println("   ✅ Great, your answer is correct!");
                 userCorrectAnswer++;
             } else if (correctAns.length > 1) {
                 System.out.println("   ❌ Your answers are wrong. The right answer are");
                 for (int j = 0; j < correctAns.length; j++) {
+                    if (correctAns[j].equals("a")) {
+                        correctAnsText = questions[row][1];
+                    } else if (correctAns[j].equals("b")) {
+                        correctAnsText = questions[row][2];
+                    } else if (correctAns[j].equals("c")) {
+                        correctAnsText = questions[row][3];
+                    } else if (correctAns[j].equals("d")) {
+                        correctAnsText = questions[row][4];
+                    }
                     System.out.println("      " + correctAns[j] + ". " + correctAnsText);
                 }
 
