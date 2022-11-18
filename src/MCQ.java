@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,9 +10,11 @@ public class MCQ {
     private String mcqSetName;
     private String filePath;
     private int amountOfField;
-    private String[][] questions;
+    public String[][] questions;
     private int correctAnswer;
     public double score;
+    public String[] data;
+    public List<String> recordList = new ArrayList<String>();
 
     public MCQ(String mcqSetName, String filePath, int amountOfField) {
         this.mcqSetName = mcqSetName;
@@ -19,7 +23,7 @@ public class MCQ {
         correctAnswer = 0;
 
         // Construct MCQ set
-        List<String> recordList = new ArrayList<String>();
+//        List<String> recordList = new ArrayList<String>();
         String delimiter = ",";
         String currentLine;
 
@@ -28,20 +32,21 @@ public class MCQ {
             BufferedReader br = new BufferedReader(fr);
 
             while ((currentLine = br.readLine()) != null) {
+                data = currentLine.split(delimiter);
                 recordList.add(currentLine);
             }
             int recordCount = recordList.size();
 
-            String arrayToReturn[][] = new String[recordCount][this.amountOfField];
-            String[] data;
-
-            for (int i = 0; i < recordCount; i++) {
-                data = recordList.get(i).split(delimiter);
-                for (int j = 0; j < data.length; j++) {
-                    arrayToReturn[i][j] = data[j];
-                }
-            }
-            this.questions = arrayToReturn;
+//            String arrayToReturn[][] = new String[recordCount][this.amountOfField];
+//            String[] data;
+//
+//            for (int i = 0; i < recordCount; i++) {
+//                data = recordList.get(i).split(delimiter);
+//                for (int j = 0; j < data.length; j++) {
+//                    arrayToReturn[i][j] = data[j];
+//                }
+//            }
+//            this.questions = arrayToReturn;
         } catch (Exception e) {
             System.out.println(e);
             this.questions = null;
@@ -64,10 +69,15 @@ public class MCQ {
         return this.getCorrectAnswer() - this.questions.length;
     }
 
+    public void printLines(int no) {
+        System.out.println(recordList.get(9));
+    }
+
     public void doMCQ() {
         for (int row = 0; row < this.questions.length; row++) {
             Scanner input = new Scanner(System.in);
             System.out.println((row + 1) + ". " + this.questions[row][0]);
+//            for (int j = 0; j< )
             System.out.println("   a. " + this.questions[row][1]);
             System.out.println("   b. " + this.questions[row][2]);
             System.out.println("   c. " + this.questions[row][3]);
@@ -88,6 +98,11 @@ public class MCQ {
         System.out.println("Your correct answer: " + this.getCorrectAnswer());
         System.out.println("<Name here>, you answered" + this.getCorrectAnswer() + "questions right, " + (this.questions.length - this.getCorrectAnswer()) + "questions wrong for total of " + this.questions.length + " questions.");
         System.out.println("Your score: " + this.showScore());
+    }
+
+    public static void main(String[] args) {
+        MCQ java = new MCQ("Java Basic", "src/java-basic.csv",6);
+        java.printLines(1);
     }
 
 }

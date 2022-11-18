@@ -1,4 +1,4 @@
-Number of primitive data types in Java are?,6,7,8,9,1
+Number of primitive data types in Java are?,6,7,8,9,b
 What is the size of float and double in java?,32 and 64,32 and 32,64 and 64,64 and 32,a
 Which of the following lines of code creates a variable to store the text "Hello World"?,myString = "Hello World";,String myString = "Hello World";,String myString = Hello World;,"Hello World" = String myString;,b
 What is the result of the following expression? 1 + 3 / 2 - 7 % 3,4,2,1,5,c
