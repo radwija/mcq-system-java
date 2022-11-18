@@ -98,7 +98,7 @@ public class MCQ {
             String character = null;
             String range = null;
             int emptyOptions = 0;
-            for (int col = 1; col <= 4; col++) {
+            for (int col = 1; col <= 4; col++) { // Determine character order of options
                 if (col == 1) {
                     character = "a";
                 } else if (col == 2) {
@@ -108,7 +108,7 @@ public class MCQ {
                 } else if (col == 4) {
                     character = "d";
                 }
-                if (this.questions[row][col].equals("")) {
+                if (this.questions[row][col].equals("")) { // Determine range of character that user can input to answer
                     emptyOptions++;
                     if (emptyOptions == 1) {
                         range = "c";
@@ -141,15 +141,15 @@ public class MCQ {
                     if (emptyOptions > 0) {
                         do {
                             System.out.print(">> Input the available options: ");
-                            userInput = input.next();
+                            userInput = input.next().toLowerCase();
                         } while (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]"));
-                        userAnswer.add(userInput.toLowerCase());
+                        userAnswer.add(userInput);
                     } else {
                         do {
                             System.out.print(">> Input the available options: ");
-                            userInput = input.next();
+                            userInput = input.next().toLowerCase();
                         } while (!userInput.matches("[a-dA-D]"));
-                        userAnswer.add(userInput.toLowerCase());
+                        userAnswer.add(userInput);
                     }
                 } else if (noOfAnswerNeeded > 1) {
                     if (emptyOptions > 0) {
@@ -159,7 +159,7 @@ public class MCQ {
                             if (userAnswer.contains(userInput)) {
                                 System.out.println("   You can't input the same input as before!");
                             }
-                        } while (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]"));
+                        } while (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]") || userAnswer.contains(userInput));
                         userAnswer.add(userInput);
                     } else {
                         do {
