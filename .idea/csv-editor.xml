@@ -24,6 +24,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/src/mcq/java-basic.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/src/question.csv">
           <value>
             <Attribute>

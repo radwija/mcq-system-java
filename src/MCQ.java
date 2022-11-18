@@ -106,13 +106,11 @@ public class MCQ {
                 if (this.questions[row][col].equals("")) {
                     emptyOptions++;
                     if (emptyOptions == 1) {
-                        range = "a";
+                        range = "c";
                     } else if (emptyOptions == 2) {
                         range = "b";
                     } else if (emptyOptions == 3) {
-                        range = "c";
-                    } else if (emptyOptions == 4) {
-                        range = "d";
+                        range = "a";
                     }
                 } else {
                     System.out.println("   " + character + ". " + this.questions[row][col]);
