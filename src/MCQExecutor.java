@@ -36,7 +36,7 @@ public class MCQExecutor {
         String nameInput = input.nextLine();
         this.setName(nameInput);
         System.out.println("\nWelcome to our MCQ on IT, " + this.getName() + ":)");
-        System.out.println("Choose your Multiple Choice Question Set. The Options are: ");
+        System.out.println("Choose your Multiple Choice Question set. The options are: ");
         for (int i = 0; i < this.objectsToRun.size(); i++) {
             System.out.println("   " + (i + 1) + ". " + this.objectsToRun.get(i).getMcqSetName());
         }
