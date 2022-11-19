@@ -11,7 +11,7 @@ public class MCQ_1 {
     private final String mcqSetName;
     private final String filePath;
     private String name;
-    private int questionsCounter = 0;
+    private int questionsCounter;
     private int userCorrectAnswer;
     public int score;
 
@@ -19,7 +19,7 @@ public class MCQ_1 {
         this.mcqSetName = mcqSetName;
         this.filePath = filePath;
         userCorrectAnswer = 0;
-
+        questionsCounter = 0;
     }
 
     public void setName(String inputName) {
@@ -52,13 +52,12 @@ public class MCQ_1 {
     }
 
     public String getStatus() {
-        return ", you answered " + this.getUserCorrectAnswer() + " questions right, " + (this.questionsCounter - this.getUserCorrectAnswer()) + " questions wrong for total of " + this.questionsCounter + " questions.";
+        return ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getWrongAnswer() + " questions wrong for total of " + this.questionsCounter + " questions.";
     }
 
     public void doMCQ() {
         Scanner input = new Scanner(System.in);
 
-        List<String> recordList = new ArrayList<String>();
         String delimiter = ",";
         String currentLine;
         String[] questionLine;
@@ -105,7 +104,6 @@ public class MCQ_1 {
                     }
                 }
                 String[] correctAns = questionLine[5].split("&"); // Separate the correct answer as array
-                List<String> optionTexts = new ArrayList<String>();
                 String correctAnsText = "";
                 // Getting the correct answer text to be shown in answer correction
                 if (Arrays.asList(correctAns).contains("a")) {
@@ -119,7 +117,7 @@ public class MCQ_1 {
                 }
 
                 String userInput;
-                List<String> userAnswer = new ArrayList<String>(); // Make user able to input multiple answer. Once user input the input added into the array list.
+                List<String> userAnswer = new ArrayList<>(); // Make user able to input multiple answer. Once user input the input added into the array list.
                 for (int i = 0; i < noOfAnswerNeeded; i++) {
                     if (noOfAnswerNeeded == 1) {
                         if (emptyOptions > 0) {
@@ -195,5 +193,4 @@ public class MCQ_1 {
         System.out.println(this.getName() + this.getStatus());
         System.out.println("Your score: " + this.showScore());
     }
-
 }
