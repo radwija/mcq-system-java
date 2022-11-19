@@ -26,12 +26,15 @@ public class MCQ_1 {
     public void setName(String inputName) {
         this.name = inputName;
     }
+
     private String getName() {
         return this.name;
     }
+
     public String getMcqSetName() {
         return this.mcqSetName;
     }
+
     private void setScore() {
         this.score = userCorrectAnswer * 100 / this.questionsCounter;
     }
@@ -45,7 +48,7 @@ public class MCQ_1 {
     }
 
     private int getWrongAnswer() {
-        return this.getUserCorrectAnswer() - this.questionsCounter;
+        return this.questionsCounter - this.getUserCorrectAnswer();
     }
 
     private String getStatus() {
@@ -58,7 +61,6 @@ public class MCQ_1 {
         String delimiter = ",";
         String currentLine;
         String[] questionLine;
-
 
         try {
             FileReader fr = new FileReader(this.filePath);
