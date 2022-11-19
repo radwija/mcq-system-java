@@ -123,12 +123,18 @@ public class MCQ_1 {
                             do {
                                 System.out.print(">> Input the available options: ");
                                 userInput = input.next().toLowerCase();
+                                if (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]")) {
+                                    System.out.println("   Your input is invalid!");
+                                }
                             } while (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]"));
                             userAnswer.add(userInput);
                         } else {
                             do {
                                 System.out.print(">> Input the available options: ");
                                 userInput = input.next().toLowerCase();
+                                if (!userInput.matches("[a-dA-D]")) {
+                                    System.out.println("   Your input is invalid!");
+                                }
                             } while (!userInput.matches("[a-dA-D]"));
                             userAnswer.add(userInput);
                         }
@@ -139,6 +145,8 @@ public class MCQ_1 {
                                 userInput = input.next().toLowerCase();
                                 if (userAnswer.contains(userInput)) {
                                     System.out.println("   You can't input the same input as before!");
+                                } else if (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]")) {
+                                    System.out.println("   Your input is invalid!");
                                 }
                             } while (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]") || userAnswer.contains(userInput));
                             userAnswer.add(userInput);
@@ -148,6 +156,8 @@ public class MCQ_1 {
                                 userInput = input.next().toLowerCase();
                                 if (userAnswer.contains(userInput)) {
                                     System.out.println("   You can't input the same input as before!");
+                                } else if (!userInput.matches("[a-dA-D]")) {
+                                    System.out.println("   Your input is invalid!");
                                 }
                             } while (!userInput.matches("[a-dA-D]") || userAnswer.contains(userInput));
                             userAnswer.add(userInput);
