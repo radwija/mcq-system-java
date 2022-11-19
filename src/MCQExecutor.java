@@ -10,8 +10,8 @@ public class MCQExecutor {
         this.objectsToRun = objectsToRun;
     }
 
-    private void setName(String inputName) {
-        this.name = inputName;
+    private void setName(String nameInput) {
+        this.name = nameInput;
     }
 
     private String getName() {
