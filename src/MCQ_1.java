@@ -13,8 +13,9 @@ public class MCQ_1 {
     private String name;
     private int questionsCounter;
     private int userCorrectAnswer;
-    public int score;
+    private int score;
 
+    // Constructor
     public MCQ_1(String mcqSetName, String filePath) {
         this.mcqSetName = mcqSetName;
         this.filePath = filePath;
@@ -25,33 +26,29 @@ public class MCQ_1 {
     public void setName(String inputName) {
         this.name = inputName;
     }
-
-    public String getName() {
+    private String getName() {
         return this.name;
     }
-
-
     public String getMcqSetName() {
         return this.mcqSetName;
     }
-
-    public void setScore() {
+    private void setScore() {
         this.score = userCorrectAnswer * 100 / this.questionsCounter;
     }
 
-    public String showScore() {
+    private String showScore() {
         return this.score + "%";
     }
 
-    public int getUserCorrectAnswer() {
+    private int getUserCorrectAnswer() {
         return this.userCorrectAnswer;
     }
 
-    public int getWrongAnswer() {
+    private int getWrongAnswer() {
         return this.getUserCorrectAnswer() - this.questionsCounter;
     }
 
-    public String getStatus() {
+    private String getStatus() {
         return ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getWrongAnswer() + " questions wrong for total of " + this.questionsCounter + " questions.";
     }
 
