@@ -52,7 +52,7 @@ public class MCQ_1 {
     }
 
     private String getStatus() {
-        return ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getWrongAnswer() + " questions wrong for total of " + this.questionsCounter + " questions.";
+        return "\n" + this.getName() + ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getWrongAnswer() + " questions wrong for total of " + this.questionsCounter + " questions.";
     }
 
     public void doMCQ() {
@@ -65,7 +65,6 @@ public class MCQ_1 {
         try {
             FileReader fr = new FileReader(this.filePath);
             BufferedReader br = new BufferedReader(fr);
-
 
             while ((currentLine = br.readLine()) != null) {
                 questionLine = currentLine.split(delimiter);
@@ -197,7 +196,7 @@ public class MCQ_1 {
         }
         this.setScore();
         System.out.println("Your correct answer: " + this.getUserCorrectAnswer());
-        System.out.println(this.getName() + this.getStatus());
+        System.out.println(this.getStatus());
         System.out.println("Your score: " + this.showScore());
     }
 }
