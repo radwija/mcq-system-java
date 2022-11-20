@@ -3,10 +3,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MCQExecutor {
-    private List<MCQ_1> objectsToRun;
+    private List<MCQ> objectsToRun;
     private String name;
 
-    public MCQExecutor(List<MCQ_1> objectsToRun) {
+    public MCQExecutor(List<MCQ> objectsToRun) {
         this.objectsToRun = objectsToRun;
     }
 
