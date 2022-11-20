@@ -8,31 +8,31 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MCQ {
-    private final String mcqSetName;
+    private final String mcqName;
     private final String filePath;
-    private String name;
+    private String userName;
     private int questionsCounter;
     private int userCorrectAnswer;
     private int score;
 
     // Constructor
-    public MCQ(String mcqSetName, String filePath) {
-        this.mcqSetName = mcqSetName;
+    public MCQ(String mcqName, String filePath) {
+        this.mcqName = mcqName;
         this.filePath = filePath;
         userCorrectAnswer = 0;
         questionsCounter = 0;
     }
 
-    public void setName(String inputName) {
-        this.name = inputName;
+    public void setUserName(String inputName) {
+        this.userName = inputName;
     }
 
-    private String getName() {
-        return this.name;
+    private String getUserName() {
+        return this.userName;
     }
 
-    public String getMcqSetName() {
-        return this.mcqSetName;
+    public String getMcqName() {
+        return this.mcqName;
     }
 
     private void setScore() {
@@ -52,7 +52,7 @@ public class MCQ {
     }
 
     private String getStatus() {
-        return "\n" + this.getName() + ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getWrongAnswer() + " questions wrong for total of " + this.questionsCounter + " questions.";
+        return "\n" + this.getUserName() + ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getWrongAnswer() + " questions wrong for total of " + this.questionsCounter + " questions.";
     }
 
     public void doMCQ() {

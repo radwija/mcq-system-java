@@ -4,41 +4,41 @@ import java.util.Scanner;
 
 public class MCQExecutor {
     private List<MCQ> objectsToRun;
-    private String name;
+    private String userName;
 
     public MCQExecutor(List<MCQ> objectsToRun) {
         this.objectsToRun = objectsToRun;
     }
 
-    private void setName(String nameInput) {
-        this.name = nameInput;
+    private void setUserName(String nameInput) {
+        this.userName = nameInput;
     }
 
-    private String getName() {
-        return this.name;
+    private String getUserName() {
+        return this.userName;
     }
 
-    private void chooseMcq(int orderOfMCQ) {
+    private void chooseMcqToRun(int orderOfMCQ) {
         this.objectsToRun.get(orderOfMCQ - 1).doMCQ();
     }
 
-    private void setNameToChosenMCQ(int orderOfMCQ, String nameInput) {
-        this.objectsToRun.get(orderOfMCQ - 1).setName(nameInput);
+    private void setUserNameToChosenMCQ(int orderOfMCQ, String nameInput) {
+        this.objectsToRun.get(orderOfMCQ - 1).setUserName(nameInput);
     }
 
     private String getChosenMcqName(int orderOfMCQ) {
-        return this.objectsToRun.get(orderOfMCQ - 1).getMcqSetName();
+        return this.objectsToRun.get(orderOfMCQ - 1).getMcqName();
     }
 
     public void executeMcq() {
         Scanner input = new Scanner(System.in);
         System.out.print("Hi, how can we address you?\n>> Enter your name: ");
         String nameInput = input.nextLine();
-        this.setName(nameInput);
-        System.out.println("\nWelcome to our MCQ on IT, " + this.getName() + ":)");
+        this.setUserName(nameInput);
+        System.out.println("\nWelcome to our MCQ on IT, " + this.getUserName() + ":)");
         System.out.println("Choose your Multiple Choice Question set. The options are: ");
         for (int i = 0; i < this.objectsToRun.size(); i++) {
-            System.out.println("   " + (i + 1) + ". " + this.objectsToRun.get(i).getMcqSetName());
+            System.out.println("   " + (i + 1) + ". " + this.objectsToRun.get(i).getMcqName());
         }
         int chosenMcq = 0;
         boolean isNumber;
@@ -59,8 +59,8 @@ public class MCQExecutor {
             }
         } while (chosenMcq > this.objectsToRun.size());
         System.out.println("\n*** " + this.getChosenMcqName(chosenMcq) + " ***");
-        System.out.println("Good luck, " + this.getName() + "!");
-        this.setNameToChosenMCQ(chosenMcq, nameInput);
-        this.chooseMcq(chosenMcq);
+        System.out.println("Good luck, " + this.getUserName() + "!");
+        this.setUserNameToChosenMCQ(chosenMcq, nameInput);
+        this.chooseMcqToRun(chosenMcq);
     }
 }
