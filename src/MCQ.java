@@ -158,7 +158,7 @@ public class MCQ {
         return correctAnsText;
     }
 
-    protected void resetEmptyOptionsSize() {
+    private void resetEmptyOptionsSize() {
         emptyOptionsSize = 0;
     }
 
