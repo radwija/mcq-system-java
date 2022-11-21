@@ -98,6 +98,7 @@ public class MCQ {
                 this.checkUserAnswer();
             }
         } catch (Exception e) {
+            System.out.println("\nOh no, the MCQ file not found:(");
             e.printStackTrace();
         }
         this.getStatus();
@@ -116,6 +117,7 @@ public class MCQ {
             System.out.println(getAnswerNeededSize() + " answers needed *");
         }
     }
+
     protected void setCharacterAndRange() {
         for (int col = 1; col <= 4; col++) { // Determine character order of options
             if (col == 1) {

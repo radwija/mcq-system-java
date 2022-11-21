@@ -22,6 +22,7 @@ public class MCQWithText extends MCQ {
                 this.doTextTypeMCQ(getMCQType());
             }
         } catch (Exception e) {
+            System.out.println("\nOh no, the MCQ file not found:(");
             e.printStackTrace();
         }
         this.getStatus();
