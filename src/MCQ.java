@@ -14,8 +14,6 @@ public class MCQ {
     private int questionsCounter;
     private int userCorrectAnswer;
     private int score;
-    String[] questionLine;
-    int noOfAnswerNeeded;
 
     // Constructor
     public MCQ(String mcqName, String filePath) {
@@ -42,7 +40,7 @@ public class MCQ {
     }
 
     private void setScore() {
-        this.score = userCorrectAnswer * 100 / this.questionsCounter;
+        this.score = userCorrectAnswer * 100 / this.getQuestionsCounter();
     }
 
     private String showScore() {
@@ -54,11 +52,11 @@ public class MCQ {
     }
 
     private int getWrongAnswer() {
-        return this.questionsCounter - this.getUserCorrectAnswer();
+        return this.getQuestionsCounter() - this.getUserCorrectAnswer();
     }
 
     private String getStatus() {
-        return "\n" + this.getUserName() + ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getWrongAnswer() + " questions wrong for total of " + this.getUserCorrectAnswer() + " questions.";
+        return "\n" + this.getUserName() + ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getWrongAnswer() + " questions wrong for total of " + this.getQuestionsCounter() + " questions.";
     }
 
     public void doMCQ() {
@@ -66,7 +64,7 @@ public class MCQ {
 
         String delimiter = ",";
         String currentLine;
-
+        String[] questionLine;
 
         try {
             FileReader fr = new FileReader(this.filePath);
@@ -76,8 +74,8 @@ public class MCQ {
                 questionLine = currentLine.split(delimiter);
                 questionsCounter++;
 
-                System.out.println("\n~ Question " + (questionsCounter) + " ~\n" + questionLine[0]);
-                 noOfAnswerNeeded = Integer.parseInt(questionLine[6]);
+                System.out.println("\n~ Question " + (this.getQuestionsCounter()) + " ~\n" + questionLine[0]);
+                int noOfAnswerNeeded = Integer.parseInt(questionLine[6]);
                 if (noOfAnswerNeeded > 1) {
                     System.out.println(noOfAnswerNeeded + " answers needed *");
                 }
@@ -201,7 +199,6 @@ public class MCQ {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
-            questionLine = null;
         }
         this.setScore();
         System.out.println("Your correct answer: " + this.getUserCorrectAnswer());
