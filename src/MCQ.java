@@ -14,6 +14,8 @@ public class MCQ {
     private int questionsCounter;
     private int userCorrectAnswer;
     private int score;
+    String[] questionLine;
+    int noOfAnswerNeeded;
 
     // Constructor
     public MCQ(String mcqName, String filePath) {
@@ -35,6 +37,10 @@ public class MCQ {
         return this.mcqName;
     }
 
+    public int getQuestionsCounter() {
+        return questionsCounter;
+    }
+
     private void setScore() {
         this.score = userCorrectAnswer * 100 / this.questionsCounter;
     }
@@ -52,7 +58,7 @@ public class MCQ {
     }
 
     private String getStatus() {
-        return "\n" + this.getUserName() + ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getWrongAnswer() + " questions wrong for total of " + this.questionsCounter + " questions.";
+        return "\n" + this.getUserName() + ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getWrongAnswer() + " questions wrong for total of " + this.getUserCorrectAnswer() + " questions.";
     }
 
     public void doMCQ() {
@@ -60,7 +66,7 @@ public class MCQ {
 
         String delimiter = ",";
         String currentLine;
-        String[] questionLine;
+
 
         try {
             FileReader fr = new FileReader(this.filePath);
@@ -71,7 +77,7 @@ public class MCQ {
                 questionsCounter++;
 
                 System.out.println("\n~ Question " + (questionsCounter) + " ~\n" + questionLine[0]);
-                int noOfAnswerNeeded = Integer.parseInt(questionLine[6]);
+                 noOfAnswerNeeded = Integer.parseInt(questionLine[6]);
                 if (noOfAnswerNeeded > 1) {
                     System.out.println(noOfAnswerNeeded + " answers needed *");
                 }
@@ -169,25 +175,28 @@ public class MCQ {
                     userCorrectAnswer++;
                 } else if (correctAns.length > 1) {
                     System.out.println("   ❌ Your answers are wrong. The right answer are");
-                    for (int j = 0; j < correctAns.length; j++) {
-                        if (correctAns[j].equals("a")) {
-                            correctAnsText = questionLine[1];
-                        } else if (correctAns[j].equals("b")) {
-                            correctAnsText = questionLine[2];
-                        } else if (correctAns[j].equals("c")) {
-                            correctAnsText = questionLine[3];
-                        } else if (correctAns[j].equals("d")) {
-                            correctAnsText = questionLine[4];
+                    for (String correctAn : correctAns) {
+                        switch (correctAn) {
+                            case "a":
+                                correctAnsText = questionLine[1];
+                                break;
+                            case "b":
+                                correctAnsText = questionLine[2];
+                                break;
+                            case "c":
+                                correctAnsText = questionLine[3];
+                                break;
+                            case "d":
+                                correctAnsText = questionLine[4];
+                                break;
                         }
-                        System.out.println("      " + correctAns[j] + ". " + correctAnsText);
+                        System.out.println("      " + correctAn + ". " + correctAnsText);
                     }
 
                 } else {
                     System.out.println("   ❌ Your answer is wrong. The right answer is " + correctAns[0] + ". " + correctAnsText);
                 }
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
