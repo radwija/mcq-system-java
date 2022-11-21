@@ -13,7 +13,7 @@ public class MCQ {
     private int userCorrectAnswer;
     private int score;
     private List<String> userAnswer;
-    private Scanner input;
+    private final Scanner input;
     private int answerNeededSize;
     private int emptyOptionsSize;
     private String range;
@@ -111,7 +111,7 @@ public class MCQ {
     }
 
     protected void printQuestion() {
-        System.out.println("\n~ Question " + (this.getQuestionsCounter()) + " ~\n" + questionLine[0].toString());
+        System.out.println("\n~ Question " + (this.getQuestionsCounter()) + " ~\n" + questionLine[0]);
         if (getAnswerNeededSize() > 1) {
             System.out.println(getAnswerNeededSize() + " answers needed *");
         }
