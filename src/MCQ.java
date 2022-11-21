@@ -31,7 +31,7 @@ public class MCQ {
         input = new Scanner(System.in);
     }
 
-    public String getFilePath() {
+    protected String getFilePath() {
         return filePath;
     }
 
@@ -71,7 +71,7 @@ public class MCQ {
         return "\n" + this.getUserName() + ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getWrongAnswer() + " questions wrong for total of " + this.getQuestionsCounter() + " questions.";
     }
 
-    public Integer getMCQType() {
+    protected Integer getMCQType() {
         return Integer.parseInt(questionLine[7]);
     }
 
@@ -217,7 +217,7 @@ public class MCQ {
         return userAnswer;
     }
 
-    public void checkUserAnswer() {
+    protected void checkUserAnswer() {
         if (userAnswer.containsAll(Arrays.asList(correctAns))) {
             System.out.println("   ✅ Great, your answer is correct!");
             userCorrectAnswer++;
