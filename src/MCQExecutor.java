@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 public class MCQExecutor {
     private List<MCQ> objectsToRun;
+    private final Scanner input;
     private String userName;
 
     public MCQExecutor(List<MCQ> objectsToRun) {
         this.objectsToRun = objectsToRun;
+        input = new Scanner(System.in);
     }
 
     private void setUserName(String nameInput) {
@@ -31,7 +33,6 @@ public class MCQExecutor {
     }
 
     public void executeMcq() {
-        Scanner input = new Scanner(System.in);
         System.out.print("Hi, how can we address you?\n>> Enter your name: ");
         String nameInput = input.nextLine();
         this.setUserName(nameInput);
