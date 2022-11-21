@@ -9,7 +9,7 @@ public class MCQ {
     private final String mcqName;
     private final String filePath;
     private String userName;
-    private int questionsCounter;
+    protected int questionsCounter;
     private int userCorrectAnswer;
     private int score;
     private List<String> userAnswer;
@@ -18,9 +18,9 @@ public class MCQ {
     private int answerNeededSize;
     private int emptyOptionsSize;
     private String range;
+    protected String[] questionLine;
     private String[] correctAns;
     private String correctAnsText;
-    private String[] questionLine;
     private String character;
 
     // Constructor
@@ -30,6 +30,10 @@ public class MCQ {
         userCorrectAnswer = 0;
         questionsCounter = 0;
         input = new Scanner(System.in);
+    }
+
+    public String getFilePath() {
+        return filePath;
     }
 
     public void setUserName(String inputName) {
@@ -44,7 +48,7 @@ public class MCQ {
         return this.mcqName;
     }
 
-    public int getQuestionsCounter() {
+    private int getQuestionsCounter() {
         return questionsCounter;
     }
 
@@ -64,8 +68,12 @@ public class MCQ {
         return this.getQuestionsCounter() - this.getUserCorrectAnswer();
     }
 
-    private String getStatus() {
+    private String getResult() {
         return "\n" + this.getUserName() + ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getWrongAnswer() + " questions wrong for total of " + this.getQuestionsCounter() + " questions.";
+    }
+
+    public String getMCQType() {
+        return questionLine[7];
     }
 
     public void doMCQ() {
@@ -73,34 +81,39 @@ public class MCQ {
         String currentLine;
 
         try {
-            FileReader fr = new FileReader(this.filePath);
+            FileReader fr = new FileReader(this.getFilePath());
             BufferedReader br = new BufferedReader(fr);
 
             while ((currentLine = br.readLine()) != null) {
                 questionLine = currentLine.split(delimiter);
                 questionsCounter++;
 
-                System.out.println("\n~ Question " + (this.getQuestionsCounter()) + " ~\n" + questionLine[0]);
-                answerNeededSize = Integer.parseInt(questionLine[6]);
-                if (answerNeededSize > 1) {
-                    System.out.println(answerNeededSize + " answers needed *");
-                }
-
+                this.printQuestion();
                 this.setSingleAnswerValidation();
                 this.setUserAnswer();
                 this.checkUserAnswer();
-
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        this.getStatus();
+    }
+
+    protected void getStatus() {
         this.setScore();
         System.out.println("Your correct answer: " + this.getUserCorrectAnswer());
-        System.out.println(this.getStatus());
+        System.out.println(this.getResult());
         System.out.println("Your score: " + this.showScore());
     }
 
-    private void setCharacterAndRange() {
+    protected void printQuestion() {
+        System.out.println("\n~ Question " + (this.getQuestionsCounter()) + " ~\n" + questionLine[0].toString());
+        answerNeededSize = Integer.parseInt(questionLine[6]);
+        if (answerNeededSize > 1) {
+            System.out.println(answerNeededSize + " answers needed *");
+        }
+    }
+    protected void setCharacterAndRange() {
         for (int col = 1; col <= 4; col++) { // Determine character order of options
             if (col == 1) {
                 character = "a";
@@ -126,7 +139,7 @@ public class MCQ {
         }
     }
 
-    private String setSingleAnswerValidation() {
+    protected String setSingleAnswerValidation() {
         correctAns = questionLine[5].split("&"); // Separate the correct answer as array
         correctAnsText = "";
         // Getting the correct answer text to be shown in answer correction
@@ -142,7 +155,11 @@ public class MCQ {
         return correctAnsText;
     }
 
-    private List<String> setUserAnswer() {
+    protected void resetEmptyOptionsSize() {
+        emptyOptionsSize = 0;
+    }
+
+    protected List<String> setUserAnswer() {
         this.setCharacterAndRange();
         userAnswer = new ArrayList<>(); // Make user able to input multiple answer. Once user input the input added into the array list.
         for (int i = 0; i < answerNeededSize; i++) {
@@ -191,7 +208,7 @@ public class MCQ {
                     userAnswer.add(userInput);
                 }
             }
-            emptyOptionsSize = 0;
+            this.resetEmptyOptionsSize();
         }
         return userAnswer;
     }
