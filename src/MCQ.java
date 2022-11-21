@@ -13,7 +13,6 @@ public class MCQ {
     private int userCorrectAnswer;
     private int score;
     private List<String> userAnswer;
-    private String userInput;
     private Scanner input;
     private int answerNeededSize;
     private int emptyOptionsSize;
@@ -167,6 +166,7 @@ public class MCQ {
         this.setCharacterAndRange();
         userAnswer = new ArrayList<>(); // Make user able to input multiple answer. Once user input the input added into the array list.
         for (int i = 0; i < getAnswerNeededSize(); i++) {
+            String userInput;
             if (getAnswerNeededSize() == 1) {
                 if (emptyOptionsSize > 0) {
                     do {
