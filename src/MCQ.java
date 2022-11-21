@@ -48,7 +48,7 @@ public class MCQ {
         return this.mcqName;
     }
 
-    private int getQuestionsCounter() {
+    protected int getQuestionsCounter() {
         return questionsCounter;
     }
 
@@ -72,8 +72,13 @@ public class MCQ {
         return "\n" + this.getUserName() + ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getWrongAnswer() + " questions wrong for total of " + this.getQuestionsCounter() + " questions.";
     }
 
-    public String getMCQType() {
-        return questionLine[7];
+    public Integer getMCQType() {
+        return Integer.parseInt(questionLine[7]);
+    }
+
+    protected int getAnswerNeededSize() {
+        answerNeededSize = Integer.parseInt(questionLine[6]);
+        return answerNeededSize;
     }
 
     public void doMCQ() {
@@ -108,9 +113,8 @@ public class MCQ {
 
     protected void printQuestion() {
         System.out.println("\n~ Question " + (this.getQuestionsCounter()) + " ~\n" + questionLine[0].toString());
-        answerNeededSize = Integer.parseInt(questionLine[6]);
-        if (answerNeededSize > 1) {
-            System.out.println(answerNeededSize + " answers needed *");
+        if (getAnswerNeededSize() > 1) {
+            System.out.println(getAnswerNeededSize() + " answers needed *");
         }
     }
     protected void setCharacterAndRange() {
@@ -162,8 +166,8 @@ public class MCQ {
     protected List<String> setUserAnswer() {
         this.setCharacterAndRange();
         userAnswer = new ArrayList<>(); // Make user able to input multiple answer. Once user input the input added into the array list.
-        for (int i = 0; i < answerNeededSize; i++) {
-            if (answerNeededSize == 1) {
+        for (int i = 0; i < getAnswerNeededSize(); i++) {
+            if (getAnswerNeededSize() == 1) {
                 if (emptyOptionsSize > 0) {
                     do {
                         System.out.print(">> Input the available options: ");

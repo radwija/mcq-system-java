@@ -1,11 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.List;
-import java.util.Scanner;
 
 public class MCQWithText extends MCQ {
-    private List<Integer> MCQType;
-
     public MCQWithText(String mcqName, String filePath) {
         super(mcqName, filePath);
     }
@@ -13,6 +9,7 @@ public class MCQWithText extends MCQ {
     public void doMCQ() {
         String delimiter = ",";
         String currentLine;
+
 
         try {
             FileReader fr = new FileReader(this.getFilePath());
@@ -22,18 +19,29 @@ public class MCQWithText extends MCQ {
                 questionLine = currentLine.split(delimiter);
                 questionsCounter++;
 
-                if (getMCQType().equals(0)) {
-                    super.printQuestion();
-                    super.setSingleAnswerValidation();
-                    super.setUserAnswer();
-                    super.checkUserAnswer();
-                } else if (getMCQType().equals(0)) {
-                    // Does the Text MCQ Type
-                }
+                this.doTextTypeMCQ(getMCQType());
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         this.getStatus();
+    }
+
+    private void doTextTypeMCQ(int type) {
+        switch (type) {
+            case 0:
+                super.printQuestion();
+                super.setSingleAnswerValidation();
+                super.setUserAnswer();
+                super.checkUserAnswer();
+                break;
+            case 1:
+                System.out.println("\n~ Question " + this.getQuestionsCounter() + " ~" + "\n*** Text Type MCQ works ***");
+                // this.printQuestion();
+                // this.setSingleAnswerValidation();
+                // this.setUserAnswer();
+                // this.checkUserAnswer();
+                break;
+        }
     }
 }
