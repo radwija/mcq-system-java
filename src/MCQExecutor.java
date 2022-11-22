@@ -6,6 +6,7 @@ public class MCQExecutor {
     private List<MCQ> objectsToRun;
     private final Scanner input;
     private String userName;
+    private int chosenMcq;
 
     public MCQExecutor(List<MCQ> objectsToRun) {
         this.objectsToRun = objectsToRun;
@@ -31,13 +32,23 @@ public class MCQExecutor {
     public void executeMcq() {
         System.out.print("Hi, how can we address you?\n>> Enter your name: ");
         String nameInput = input.nextLine();
-        this.setUserName(nameInput);
+        setUserName(nameInput);
         System.out.println("\nWelcome to our MCQ on IT, " + this.getUserName() + ":)");
+        showMCQLists();
+        chooseMCQ();
+        setUserNameToChosenMCQ(chosenMcq, nameInput);
+        chooseMcqToRun(chosenMcq);
+    }
+
+    public void showMCQLists() {
         System.out.println("Choose your Multiple Choice Question set. The options are: ");
         for (int i = 0; i < this.objectsToRun.size(); i++) {
             System.out.println("   " + (i + 1) + ". " + this.objectsToRun.get(i).getMcqName());
         }
-        int chosenMcq = 0;
+    }
+
+    public void chooseMCQ() {
+        chosenMcq = 0;
         boolean isNumber;
         do {
             do {
@@ -55,7 +66,5 @@ public class MCQExecutor {
                 System.out.println("   Your input is out of range!");
             }
         } while (chosenMcq > this.objectsToRun.size());
-        this.setUserNameToChosenMCQ(chosenMcq, nameInput);
-        this.chooseMcqToRun(chosenMcq);
     }
 }
