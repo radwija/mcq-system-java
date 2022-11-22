@@ -17,7 +17,7 @@ public class MCQ {
     private int answerNeededSize;
     private int emptyOptionsSize;
     private String range;
-    protected String[] questionLine;
+    protected String[] questionLineArray;
     private String[] correctAns;
     private String correctAnsText;
     private String character;
@@ -72,11 +72,11 @@ public class MCQ {
     }
 
     protected Integer getMCQType() {
-        return Integer.parseInt(questionLine[7]);
+        return Integer.parseInt(questionLineArray[7]);
     }
 
     protected int getAnswerNeededSize() {
-        answerNeededSize = Integer.parseInt(questionLine[6]);
+        answerNeededSize = Integer.parseInt(questionLineArray[6]);
         return answerNeededSize;
     }
 
@@ -95,7 +95,7 @@ public class MCQ {
 
             System.out.println("Good luck, " + this.getUserName() + "!");
             while ((currentLine = br.readLine()) != null) {
-                questionLine = currentLine.split(delimiter);
+                questionLineArray = currentLine.split(delimiter);
                 questionsCounter++;
 
                 this.printQuestion();
@@ -118,7 +118,7 @@ public class MCQ {
     }
 
     protected void printQuestion() {
-        System.out.println("\n~ Question " + (this.getQuestionsCounter()) + " ~\n" + questionLine[0]);
+        System.out.println("\n~ Question " + (this.getQuestionsCounter()) + " ~\n" + questionLineArray[0]);
         if (getAnswerNeededSize() > 1) {
             System.out.println(getAnswerNeededSize() + " answers needed *");
         }
@@ -135,7 +135,7 @@ public class MCQ {
             } else if (col == 4) {
                 character = "d";
             }
-            if (questionLine[col].equals("")) { // Determine range of character that user can input to answer
+            if (questionLineArray[col].equals("")) { // Determine range of character that user can input to answer
                 emptyOptionsSize++; // Determine how many there are empty question
                 if (emptyOptionsSize == 1) {
                     range = "c";
@@ -145,23 +145,23 @@ public class MCQ {
                     range = "a";
                 }
             } else {
-                System.out.println("   " + character + ". " + questionLine[col]);
+                System.out.println("   " + character + ". " + questionLineArray[col]);
             }
         }
     }
 
     protected void setCorrectAnswerAndValidation() {
-        correctAns = questionLine[5].split("&"); // Separate the correct answer as array
+        correctAns = questionLineArray[5].split("&"); // Separate the correct answer as array
         correctAnsText = "";
         // Getting the correct answer text of the single answer to be shown in answer correction
         if (Arrays.asList(correctAns).contains("a")) {
-            correctAnsText = questionLine[1];
+            correctAnsText = questionLineArray[1];
         } else if (Arrays.asList(correctAns).contains("b")) {
-            correctAnsText = questionLine[2];
+            correctAnsText = questionLineArray[2];
         } else if (Arrays.asList(correctAns).contains("c")) {
-            correctAnsText = questionLine[3];
+            correctAnsText = questionLineArray[3];
         } else if (Arrays.asList(correctAns).contains("d")) {
-            correctAnsText = questionLine[4];
+            correctAnsText = questionLineArray[4];
         }
     }
 
@@ -215,16 +215,16 @@ public class MCQ {
             for (String correctAn : correctAns) {
                 switch (correctAn) {
                     case "a":
-                        correctAnsText = questionLine[1];
+                        correctAnsText = questionLineArray[1];
                         break;
                     case "b":
-                        correctAnsText = questionLine[2];
+                        correctAnsText = questionLineArray[2];
                         break;
                     case "c":
-                        correctAnsText = questionLine[3];
+                        correctAnsText = questionLineArray[3];
                         break;
                     case "d":
-                        correctAnsText = questionLine[4];
+                        correctAnsText = questionLineArray[4];
                         break;
                 }
                 System.out.println("      " + correctAn + ". " + correctAnsText);

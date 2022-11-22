@@ -15,6 +15,5 @@ public class Main {
 
         MCQExecutor ME = new MCQExecutor(MCQSets);
         ME.executeMcq();
-
     }
 }

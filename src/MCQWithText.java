@@ -17,7 +17,7 @@ public class MCQWithText extends MCQ {
 
             System.out.println("Good luck, " + this.getUserName() + "!");
             while ((currentLine = br.readLine()) != null) {
-                questionLine = currentLine.split(delimiter);
+                questionLineArray = currentLine.split(delimiter);
                 questionsCounter++;
 
                 this.doTextTypeMCQ(getMCQType());
