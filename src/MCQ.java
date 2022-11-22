@@ -68,7 +68,7 @@ public class MCQ {
     }
 
     private String getResult() {
-        return "\n" + this.getUserName() + ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getWrongAnswer() + " questions wrong for total of " + this.getQuestionsCounter() + " questions.";
+        return this.getUserName() + ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getWrongAnswer() + " questions wrong for total of " + this.getQuestionsCounter() + " questions.";
     }
 
     protected Integer getMCQType() {
@@ -112,7 +112,7 @@ public class MCQ {
 
     protected void getStatus() {
         this.setScore();
-        System.out.println("Your correct answer: " + this.getUserCorrectAnswer());
+        System.out.println();
         System.out.println(this.getResult());
         System.out.println("Your score: " + this.showScore());
     }
