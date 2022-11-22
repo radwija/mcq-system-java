@@ -13,30 +13,14 @@ public class MCQExecutor {
         input = new Scanner(System.in);
     }
 
-    private void setUserName(String nameInput) {
-        this.userName = nameInput;
-    }
-
-    private String getUserName() {
-        return this.userName;
-    }
-
-    private void chooseMcqToRun(int orderOfMCQ) {
-        this.objectsToRun.get(orderOfMCQ - 1).doMCQ();
-    }
-
-    private void setUserNameToChosenMCQ(int orderOfMCQ, String nameInput) {
-        this.objectsToRun.get(orderOfMCQ - 1).setUserName(nameInput);
-    }
-
     public void executeMcq() {
         System.out.print("Hi, how can we address you?\n>> Enter your name: ");
-        String nameInput = input.nextLine();
-        setUserName(nameInput);
+        String userNameInput = input.nextLine();
+        setUserName(userNameInput);
         System.out.println("\nWelcome to our MCQ on IT, " + this.getUserName() + ":)");
         showMCQLists();
         chooseMCQ();
-        setUserNameToChosenMCQ(chosenMcq, nameInput);
+        setUserNameToChosenMCQ(chosenMcq, userNameInput);
         chooseMcqToRun(chosenMcq);
     }
 
@@ -66,5 +50,20 @@ public class MCQExecutor {
                 System.out.println("   Your input is out of range!");
             }
         } while (chosenMcq > this.objectsToRun.size());
+    }
+
+    private void chooseMcqToRun(int orderOfMCQ) {
+        this.objectsToRun.get(orderOfMCQ - 1).doMCQ();
+    }
+
+    private void setUserNameToChosenMCQ(int orderOfMCQ, String userNameInput) {
+        this.objectsToRun.get(orderOfMCQ - 1).setUserName(userNameInput);
+    }
+    private void setUserName(String userNameInput) {
+        this.userName = userNameInput;
+    }
+
+    private String getUserName() {
+        return this.userName;
     }
 }

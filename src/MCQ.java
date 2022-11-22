@@ -85,7 +85,6 @@ public class MCQ {
     }
 
     public void doMCQ() {
-        String delimiter = ",";
         String currentLine;
         System.out.println("\n*** " + this.getMcqName() + " ***");
 
@@ -95,7 +94,7 @@ public class MCQ {
 
             System.out.println("Good luck, " + this.getUserName() + "!");
             while ((currentLine = br.readLine()) != null) {
-                questionLineArray = currentLine.split(delimiter);
+                questionLineArray = currentLine.split(",");
                 questionsCounter++;
 
                 this.printQuestion();
