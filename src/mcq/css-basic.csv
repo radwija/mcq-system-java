@@ -2,7 +2,7 @@ CSS stands for?,Common style sheets,Control style sheets,Central style sheets,Ca
 How do you insert a comment in a CSS file?,//this is a comment//,/this is a comment/,/*this is a comment*/,This is a comment,c,1
 How many types of levels in style sheets?,One levels,Two levels,Three levels,Four levels,c,1
 CSS can do arithmetic operators.,True,False,,,b,1
-Stylesheet appears as a value of the ______ attribute.,style,jscript,sheet,nscript,a,1
+Stylesheet appears as a value of the ______ attribute.,nscript,jscript,sheet,style,d,1
 Bootstrap is CSS framework,True,False,,,a,1
 What is the correct HTML for referring to an external style sheet?,< link rel=”stylesheet” type=”text/css” href=”mystyle.css” >,< style src=”mystyle.css” >,< stylesheet>mystyle.css,< a src=”mystyle.css” >,a,1
 Which is the correct CSS syntax?,body:color=black;,body {color:black;},{body:color:black;},{body:color=black;},b,1

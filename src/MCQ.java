@@ -172,7 +172,7 @@ public class MCQ {
         emptyOptionsSize = 0;
     }
 
-    protected List<String> setUserAnswer() {
+    protected void setUserAnswer() {
         this.setCharacterAndRange();
         userAnswer = new ArrayList<>(); // Make user able to input multiple answer. Once user input the input added into the array list.
         for (int i = 0; i < getAnswerNeededSize(); i++) {
@@ -200,9 +200,8 @@ public class MCQ {
                 } while (!userInput.matches("[a-dA-D]") || userAnswer.contains(userInput));
                 userAnswer.add(userInput);
             }
-            this.resetEmptyOptionsSize();
         }
-        return userAnswer;
+        this.resetEmptyOptionsSize();
     }
 
     protected void checkUserAnswer() {
