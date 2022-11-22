@@ -28,10 +28,6 @@ public class MCQExecutor {
         this.objectsToRun.get(orderOfMCQ - 1).setUserName(nameInput);
     }
 
-    private String getChosenMcqName(int orderOfMCQ) {
-        return this.objectsToRun.get(orderOfMCQ - 1).getMcqName();
-    }
-
     public void executeMcq() {
         System.out.print("Hi, how can we address you?\n>> Enter your name: ");
         String nameInput = input.nextLine();
@@ -59,8 +55,6 @@ public class MCQExecutor {
                 System.out.println("   Your input is out of range!");
             }
         } while (chosenMcq > this.objectsToRun.size());
-        System.out.println("\n*** " + this.getChosenMcqName(chosenMcq) + " ***");
-        System.out.println("Good luck, " + this.getUserName() + "!");
         this.setUserNameToChosenMCQ(chosenMcq, nameInput);
         this.chooseMcqToRun(chosenMcq);
     }

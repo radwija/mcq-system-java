@@ -39,11 +39,11 @@ public class MCQ {
         this.userName = inputName;
     }
 
-    private String getUserName() {
+    protected String getUserName() {
         return this.userName;
     }
 
-    public String getMcqName() {
+    protected String getMcqName() {
         return this.mcqName;
     }
 
@@ -80,14 +80,20 @@ public class MCQ {
         return answerNeededSize;
     }
 
+    protected void printNotFoundFile() {
+        System.out.println("Oh no, the MCQ file not found:(");
+    }
+
     public void doMCQ() {
         String delimiter = ",";
         String currentLine;
+        System.out.println("\n*** " + this.getMcqName() + " ***");
 
         try {
             FileReader fr = new FileReader(this.getFilePath());
             BufferedReader br = new BufferedReader(fr);
 
+            System.out.println("Good luck, " + this.getUserName() + "!");
             while ((currentLine = br.readLine()) != null) {
                 questionLine = currentLine.split(delimiter);
                 questionsCounter++;
@@ -98,7 +104,7 @@ public class MCQ {
                 this.checkUserAnswer();
             }
         } catch (Exception e) {
-            System.out.println("\nOh no, the MCQ file not found:(");
+            this.printNotFoundFile();
             e.printStackTrace();
         }
         this.getStatus();

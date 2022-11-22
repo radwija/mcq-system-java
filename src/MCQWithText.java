@@ -9,12 +9,13 @@ public class MCQWithText extends MCQ {
     public void doMCQ() {
         String delimiter = ",";
         String currentLine;
-
+        System.out.println("\n*** " + this.getMcqName() + " ***");
 
         try {
             FileReader fr = new FileReader(this.getFilePath());
             BufferedReader br = new BufferedReader(fr);
 
+            System.out.println("Good luck, " + this.getUserName() + "!");
             while ((currentLine = br.readLine()) != null) {
                 questionLine = currentLine.split(delimiter);
                 questionsCounter++;
