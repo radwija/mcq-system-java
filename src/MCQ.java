@@ -99,7 +99,7 @@ public class MCQ {
                 questionsCounter++;
 
                 this.printQuestion();
-                this.setSingleAnswerValidation();
+                this.setCorrectAnswerAndValidation();
                 this.setUserAnswer();
                 this.checkUserAnswer();
             }
@@ -150,10 +150,10 @@ public class MCQ {
         }
     }
 
-    protected String setSingleAnswerValidation() {
+    protected void setCorrectAnswerAndValidation() {
         correctAns = questionLine[5].split("&"); // Separate the correct answer as array
         correctAnsText = "";
-        // Getting the correct answer text to be shown in answer correction
+        // Getting the correct answer text of the single answer to be shown in answer correction
         if (Arrays.asList(correctAns).contains("a")) {
             correctAnsText = questionLine[1];
         } else if (Arrays.asList(correctAns).contains("b")) {
@@ -163,7 +163,6 @@ public class MCQ {
         } else if (Arrays.asList(correctAns).contains("d")) {
             correctAnsText = questionLine[4];
         }
-        return correctAnsText;
     }
 
     private void resetEmptyOptionsSize() {

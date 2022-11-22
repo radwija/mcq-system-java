@@ -33,7 +33,7 @@ public class MCQWithText extends MCQ {
         switch (type) {
             case 0:
                 super.printQuestion();
-                super.setSingleAnswerValidation();
+                super.setCorrectAnswerAndValidation();
                 super.setUserAnswer();
                 super.checkUserAnswer();
                 break;
