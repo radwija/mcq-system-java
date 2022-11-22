@@ -10,7 +10,7 @@ public class MCQ {
     private final String filePath;
     private String userName;
     protected int questionsCounter;
-    private int userCorrectAnswer;
+    private int userCorrectAnswerSize;
     private int score;
     private List<String> userAnswer;
     private final Scanner input;
@@ -26,7 +26,7 @@ public class MCQ {
     public MCQ(String mcqName, String filePath) {
         this.mcqName = mcqName;
         this.filePath = filePath;
-        userCorrectAnswer = 0;
+        userCorrectAnswerSize = 0;
         questionsCounter = 0;
         input = new Scanner(System.in);
     }
@@ -52,23 +52,23 @@ public class MCQ {
     }
 
     private void setScore() {
-        this.score = userCorrectAnswer * 100 / this.getQuestionsCounter();
+        this.score = userCorrectAnswerSize * 100 / this.getQuestionsCounter();
     }
 
     private String showScore() {
         return this.score + "%";
     }
 
-    private int getUserCorrectAnswer() {
-        return this.userCorrectAnswer;
+    private int getUserCorrectAnswerSize() {
+        return this.userCorrectAnswerSize;
     }
 
     private int getUserWrongAnswer() {
-        return this.getQuestionsCounter() - this.getUserCorrectAnswer();
+        return this.getQuestionsCounter() - this.getUserCorrectAnswerSize();
     }
 
     private String getResult() {
-        return this.getUserName() + ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getUserWrongAnswer() + " questions wrong for total of " + this.getQuestionsCounter() + " questions.";
+        return this.getUserName() + ", you answered " + this.getUserCorrectAnswerSize() + " questions right, " + this.getUserWrongAnswer() + " questions wrong for total of " + this.getQuestionsCounter() + " questions.";
     }
 
     protected Integer getMCQType() {
@@ -209,7 +209,7 @@ public class MCQ {
     protected void checkUserAnswer() {
         if (userAnswer.containsAll(Arrays.asList(correctAns))) {
             System.out.println("   ✅ Great, your answer is correct!");
-            userCorrectAnswer++;
+            userCorrectAnswerSize++;
         } else if (correctAns.length > 1) {
             System.out.println("   ❌ Your answers are wrong. The right answer are");
             for (String correctAn : correctAns) {
