@@ -166,6 +166,10 @@ public class MCQ {
     }
 
     private void resetEmptyOptionsSize() {
+        /*
+        This is important because if it is not reset,
+        the emptyQuestionSize still has same value as the line of MCQ line before.
+        */
         emptyOptionsSize = 0;
     }
 
