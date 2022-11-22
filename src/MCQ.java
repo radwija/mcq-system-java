@@ -175,50 +175,28 @@ public class MCQ {
         userAnswer = new ArrayList<>(); // Make user able to input multiple answer. Once user input the input added into the array list.
         for (int i = 0; i < getAnswerNeededSize(); i++) {
             String userInput;
-            if (getAnswerNeededSize() == 1) {
-                if (emptyOptionsSize > 0) {
-                    do {
-                        System.out.print(">> Input the available options: ");
-                        userInput = input.next().toLowerCase();
-                        if (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]")) {
-                            System.out.println("   Your input is invalid!");
-                        }
-                    } while (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]"));
-                    userAnswer.add(userInput);
-                } else {
-                    do {
-                        System.out.print(">> Input the available options: ");
-                        userInput = input.next().toLowerCase();
-                        if (!userInput.matches("[a-dA-D]")) {
-                            System.out.println("   Your input is invalid!");
-                        }
-                    } while (!userInput.matches("[a-dA-D]"));
-                    userAnswer.add(userInput);
-                }
+            if (emptyOptionsSize > 0) {
+                do {
+                    System.out.print(">> Input the available options: ");
+                    userInput = input.next().toLowerCase();
+                    if (userAnswer.contains(userInput)) {
+                        System.out.println("   You can't input the same input as before!");
+                    } else if (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]")) {
+                        System.out.println("   Your input is invalid!");
+                    }
+                } while (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]") || userAnswer.contains(userInput));
+                userAnswer.add(userInput);
             } else {
-                if (emptyOptionsSize > 0) {
-                    do {
-                        System.out.print(">> Input the available options: ");
-                        userInput = input.next().toLowerCase();
-                        if (userAnswer.contains(userInput)) {
-                            System.out.println("   You can't input the same input as before!");
-                        } else if (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]")) {
-                            System.out.println("   Your input is invalid!");
-                        }
-                    } while (!userInput.matches("[a-" + range + "A-" + range.toUpperCase() + "]") || userAnswer.contains(userInput));
-                    userAnswer.add(userInput);
-                } else {
-                    do {
-                        System.out.print(">> Input the available options: ");
-                        userInput = input.next().toLowerCase();
-                        if (userAnswer.contains(userInput)) {
-                            System.out.println("   You can't input the same input as before!");
-                        } else if (!userInput.matches("[a-dA-D]")) {
-                            System.out.println("   Your input is invalid!");
-                        }
-                    } while (!userInput.matches("[a-dA-D]") || userAnswer.contains(userInput));
-                    userAnswer.add(userInput);
-                }
+                do {
+                    System.out.print(">> Input the available options: ");
+                    userInput = input.next().toLowerCase();
+                    if (userAnswer.contains(userInput)) {
+                        System.out.println("   You can't input the same input as before!");
+                    } else if (!userInput.matches("[a-dA-D]")) {
+                        System.out.println("   Your input is invalid!");
+                    }
+                } while (!userInput.matches("[a-dA-D]") || userAnswer.contains(userInput));
+                userAnswer.add(userInput);
             }
             this.resetEmptyOptionsSize();
         }
