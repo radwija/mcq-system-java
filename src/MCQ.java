@@ -63,12 +63,12 @@ public class MCQ {
         return this.userCorrectAnswer;
     }
 
-    private int getWrongAnswer() {
+    private int getUserWrongAnswer() {
         return this.getQuestionsCounter() - this.getUserCorrectAnswer();
     }
 
     private String getResult() {
-        return this.getUserName() + ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getWrongAnswer() + " questions wrong for total of " + this.getQuestionsCounter() + " questions.";
+        return this.getUserName() + ", you answered " + this.getUserCorrectAnswer() + " questions right, " + this.getUserWrongAnswer() + " questions wrong for total of " + this.getQuestionsCounter() + " questions.";
     }
 
     protected Integer getMCQType() {
